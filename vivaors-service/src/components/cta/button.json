@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_cta_buttons",
+  "info": {
+    "displayName": "Botão",
+    "icon": "toggle-on",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "url": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
+    },
+    "position": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ]
+    },
+    "titleSize": {
+      "type": "enumeration",
+      "enum": [
+        "grande",
+        "medio",
+        "pequeno"
+      ],
+      "default": "medio"
+    }
+  }
+}

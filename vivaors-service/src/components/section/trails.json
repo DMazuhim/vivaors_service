@@ -1,0 +1,54 @@
+{
+  "collectionName": "components_sections_trails",
+  "info": {
+    "displayName": "Roteiros&Listas",
+    "icon": "tasks",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "trails": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::trail.trail",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "isCarousel": {
+      "type": "boolean",
+      "default": true
+    },
+    "titleSize": {
+      "type": "enumeration",
+      "enum": [
+        "grande",
+        "medio",
+        "pequeno"
+      ],
+      "default": "medio"
+    },
+    "redirectUrl": {
+      "type": "string"
+    }
+  }
+}

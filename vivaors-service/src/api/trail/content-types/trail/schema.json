@@ -1,0 +1,118 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trails",
+  "info": {
+    "singularName": "trail",
+    "pluralName": "trails",
+    "displayName": "trail"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titlle": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "resume": {
+      "type": "richtext"
+    },
+    "readTime": {
+      "type": "string"
+    },
+    "coverMobile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "coverDesktop": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "coverCard": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "forms": {
+      "type": "component",
+      "component": "lead.form",
+      "repeatable": true
+    },
+    "seo": {
+      "type": "component",
+      "component": "meta.seo",
+      "repeatable": false
+    },
+    "editorSignature": {
+      "type": "enumeration",
+      "enum": [
+        "inicio-da-pagina",
+        "final-da-pagina"
+      ]
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "trails"
+    },
+    "components": {
+      "type": "dynamiczone",
+      "components": [
+        "section.trails",
+        "section.places-page",
+        "section.page-break",
+        "section.categories-pages",
+        "section.locations-page",
+        "section.locations-map",
+        "section.highlights",
+        "section.highlights-page",
+        "section.highlights-guide-v2",
+        "section.banners-page",
+        "section.banner-full",
+        "media.single-image",
+        "media.popup",
+        "media.gallery",
+        "media.banner-marketing",
+        "media.banner-campaign",
+        "cta.button",
+        "lead.form",
+        "content.widget",
+        "content.text"
+      ]
+    }
+  }
+}

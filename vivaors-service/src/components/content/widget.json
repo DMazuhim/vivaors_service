@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_content_widgets",
+  "info": {
+    "displayName": "widget",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "script": {
+      "type": "text"
+    },
+    "titleSize": {
+      "type": "enumeration",
+      "enum": [
+        "grande",
+        "medio",
+        "pequeno"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "captor-de-leads"
+      ]
+    }
+  }
+}

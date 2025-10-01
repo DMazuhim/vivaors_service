@@ -1,0 +1,54 @@
+{
+  "collectionName": "components_sections_banner_full",
+  "info": {
+    "displayName": "Mega Banner",
+    "icon": "cube",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "coverDesktop": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
+    },
+    "coverMobile": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
+    },
+    "titleSize": {
+      "type": "enumeration",
+      "enum": [
+        "grande",
+        "medio",
+        "pequeno"
+      ],
+      "default": "medio"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_banners_pages",
+  "info": {
+    "displayName": "Seção de banners",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "banners": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.banner-marketing"
+    },
+    "location": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::location.location"
+    },
+    "redirectUrl": {
+      "type": "string"
+    }
+  }
+}
