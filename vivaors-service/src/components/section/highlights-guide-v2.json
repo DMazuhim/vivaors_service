@@ -8,8 +8,8 @@
   "attributes": {
     "highlights": {
       "type": "component",
-      "repeatable": true,
-      "component": "section.highlights"
+      "component": "section.highlights",
+      "repeatable": true
     },
     "title": {
       "type": "string",
@@ -18,6 +18,9 @@
           "translate": "translate"
         }
       }
+    },
+    "subtitle": {
+      "type": "string"
     }
   }
 }

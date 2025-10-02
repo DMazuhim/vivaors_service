@@ -9,21 +9,21 @@
   "attributes": {
     "label": {
       "type": "string",
-      "required": true,
       "pluginOptions": {
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "required": true
     },
     "url": {
       "type": "string",
-      "required": true,
       "pluginOptions": {
         "translate": {
           "translate": "copy"
         }
-      }
+      },
+      "required": true
     },
     "position": {
       "type": "enumeration",
@@ -33,14 +33,8 @@
         "right"
       ]
     },
-    "titleSize": {
-      "type": "enumeration",
-      "enum": [
-        "grande",
-        "medio",
-        "pequeno"
-      ],
-      "default": "medio"
+    "subtitle": {
+      "type": "string"
     }
   }
 }

@@ -33,17 +33,11 @@
         }
       }
     },
-    "titleSize": {
-      "type": "enumeration",
-      "enum": [
-        "grande",
-        "medio",
-        "pequeno"
-      ],
-      "default": "medio"
-    },
     "redirectUrl": {
       "type": "string"
+    },
+    "isCarrousel": {
+      "type": "boolean"
     }
   }
 }

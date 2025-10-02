@@ -12,14 +12,6 @@
     "script": {
       "type": "text"
     },
-    "titleSize": {
-      "type": "enumeration",
-      "enum": [
-        "grande",
-        "medio",
-        "pequeno"
-      ]
-    },
     "type": {
       "type": "enumeration",
       "enum": [

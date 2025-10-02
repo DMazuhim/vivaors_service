@@ -8,16 +8,24 @@
   "attributes": {
     "banners": {
       "type": "component",
-      "repeatable": true,
-      "component": "media.banner-marketing"
-    },
-    "location": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::location.location"
+      "component": "media.banner-marketing",
+      "repeatable": true
     },
     "redirectUrl": {
       "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "promoBanner",
+        "heroBanner"
+      ]
     }
   }
 }

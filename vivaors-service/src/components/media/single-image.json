@@ -7,28 +7,28 @@
   },
   "options": {},
   "attributes": {
-    "image": {
+    "images": {
       "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ],
       "pluginOptions": {
         "translate": {
           "translate": "copy"
         }
-      }
+      },
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "position": {
       "type": "enumeration",
+      "required": true,
+      "default": "center",
       "enum": [
         "left",
         "center",
         "right"
-      ],
-      "default": "center",
-      "required": true
+      ]
     },
     "imageDirection": {
       "type": "enumeration",
@@ -77,14 +77,8 @@
         }
       }
     },
-    "titleSize": {
-      "type": "enumeration",
-      "enum": [
-        "grande",
-        "medio",
-        "pequeno"
-      ],
-      "default": "medio"
+    "subtitle": {
+      "type": "string"
     }
   }
 }

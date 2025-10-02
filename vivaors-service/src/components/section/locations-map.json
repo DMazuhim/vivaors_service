@@ -42,15 +42,6 @@
           "translate": "translate"
         }
       }
-    },
-    "titleSize": {
-      "type": "enumeration",
-      "enum": [
-        "grande",
-        "medio",
-        "pequeno"
-      ],
-      "default": "medio"
     }
   }
 }

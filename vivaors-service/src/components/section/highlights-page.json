@@ -8,33 +8,27 @@
   "attributes": {
     "highlights": {
       "type": "component",
-      "repeatable": true,
-      "component": "section.highlights"
+      "component": "section.highlights",
+      "repeatable": true
     },
     "title": {
       "type": "string",
-      "required": true,
       "pluginOptions": {
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "required": true
     },
     "location": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::location.location"
     },
-    "titleSize": {
-      "type": "enumeration",
-      "enum": [
-        "grande",
-        "medio",
-        "pequeno"
-      ],
-      "default": "medio"
-    },
     "redirectUrl": {
+      "type": "string"
+    },
+    "subtitle": {
       "type": "string"
     }
   }

@@ -91,27 +91,33 @@
     "components": {
       "type": "dynamiczone",
       "components": [
-        "section.trails",
+        "section.itineraries",
         "section.places-page",
         "section.page-break",
         "section.categories-pages",
         "section.locations-page",
         "section.locations-map",
-        "section.highlights",
         "section.highlights-page",
         "section.highlights-guide-v2",
         "section.banners-page",
-        "section.banner-full",
         "media.single-image",
         "media.popup",
-        "media.gallery",
-        "media.banner-marketing",
-        "media.banner-campaign",
         "cta.button",
         "lead.form",
         "content.widget",
-        "content.text"
+        "content.text",
+        "section.experiences",
+        "content.text-experience",
+        "content.text-itinerary",
+        "content.text-guide",
+        "content.text-location"
       ]
+    },
+    "video": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::video.video",
+      "inversedBy": "experiences"
     }
   }
 }

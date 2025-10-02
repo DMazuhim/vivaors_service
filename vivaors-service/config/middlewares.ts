@@ -16,16 +16,12 @@ export default [
             'data:',
             'blob:',
             'market-assets.strapi.io',
-            // URL ATUALIZADO
-            '0f39f40eb400.ngrok-free.app',
           ],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
             'market-assets.strapi.io',
-            // URL ATUALIZADO
-            '0f39f40eb400.ngrok-free.app',
           ],
           upgradeInsecureRequests: null,
         },

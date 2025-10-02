@@ -384,12 +384,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    bannerDesktop: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    bannerMobile: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     color: Schema.Attribute.String;
     coverDesktop: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
@@ -405,8 +399,11 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::experience.experience'
     >;
-    guides: Schema.Attribute.Relation<'manyToMany', 'api::guide.guide'>;
     icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    itineraries: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::itinerary.itinerary'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -416,7 +413,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.String;
     title: Schema.Attribute.String;
-    trails: Schema.Attribute.Relation<'manyToMany', 'api::trail.trail'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -441,26 +437,26 @@ export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
     >;
     components: Schema.Attribute.DynamicZone<
       [
-        'section.trails',
+        'section.itineraries',
         'section.places-page',
         'section.page-break',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
-        'section.highlights',
         'section.highlights-page',
         'section.highlights-guide-v2',
         'section.banners-page',
-        'section.banner-full',
         'media.single-image',
         'media.popup',
-        'media.gallery',
-        'media.banner-marketing',
-        'media.banner-campaign',
         'cta.button',
         'lead.form',
         'content.widget',
         'content.text',
+        'section.experiences',
+        'content.text-experience',
+        'content.text-itinerary',
+        'content.text-guide',
+        'content.text-location',
       ]
     >;
     coverDesktop: Schema.Attribute.Media<
@@ -500,6 +496,7 @@ export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    video: Schema.Attribute.Relation<'manyToOne', 'api::video.video'>;
   };
 }
 
@@ -514,32 +511,28 @@ export interface ApiGuideGuide extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    categories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::category.category'
-    >;
     components: Schema.Attribute.DynamicZone<
       [
-        'section.trails',
+        'section.itineraries',
         'section.places-page',
         'section.page-break',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
-        'section.highlights',
         'section.highlights-page',
         'section.highlights-guide-v2',
         'section.banners-page',
-        'section.banner-full',
         'media.single-image',
         'media.popup',
-        'media.gallery',
-        'media.banner-marketing',
-        'media.banner-campaign',
         'cta.button',
         'lead.form',
         'content.widget',
         'content.text',
+        'section.experiences',
+        'content.text-experience',
+        'content.text-itinerary',
+        'content.text-guide',
+        'content.text-location',
       ]
     >;
     coverCardDesktop: Schema.Attribute.Media<
@@ -562,11 +555,96 @@ export interface ApiGuideGuide extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::guide.guide'> &
       Schema.Attribute.Private;
+    locations: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::location.location'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'meta.seo', false>;
     slug: Schema.Attribute.String;
     subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    video: Schema.Attribute.Relation<'manyToOne', 'api::video.video'>;
+  };
+}
+
+export interface ApiItineraryItinerary extends Struct.CollectionTypeSchema {
+  collectionName: 'itineraries';
+  info: {
+    displayName: 'itinerary';
+    pluralName: 'itineraries';
+    singularName: 'itinerary';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::category.category'
+    >;
+    components: Schema.Attribute.DynamicZone<
+      [
+        'section.itineraries',
+        'section.places-page',
+        'section.page-break',
+        'section.categories-pages',
+        'section.locations-page',
+        'section.locations-map',
+        'section.highlights-page',
+        'section.highlights-guide-v2',
+        'section.banners-page',
+        'media.single-image',
+        'media.popup',
+        'cta.button',
+        'lead.form',
+        'content.widget',
+        'content.text',
+        'section.experiences',
+        'content.text-experience',
+        'content.text-itinerary',
+        'content.text-guide',
+        'content.text-location',
+      ]
+    >;
+    coverCard: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    coverDesktop: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    coverMobile: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText;
+    editorSignature: Schema.Attribute.Enumeration<
+      ['inicio-da-pagina', 'final-da-pagina']
+    >;
+    forms: Schema.Attribute.Component<'lead.form', true>;
+    gallery: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::itinerary.itinerary'
+    > &
+      Schema.Attribute.Private;
+    locations: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::location.location'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    readTime: Schema.Attribute.String;
+    resume: Schema.Attribute.RichText;
+    seo: Schema.Attribute.Component<'meta.seo', false>;
+    slug: Schema.Attribute.String;
+    titlle: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -590,6 +668,30 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
     bannerMobile: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    components: Schema.Attribute.DynamicZone<
+      [
+        'section.itineraries',
+        'section.places-page',
+        'section.page-break',
+        'section.categories-pages',
+        'section.locations-page',
+        'section.locations-map',
+        'section.highlights-page',
+        'section.highlights-guide-v2',
+        'section.banners-page',
+        'media.single-image',
+        'media.popup',
+        'cta.button',
+        'lead.form',
+        'content.widget',
+        'content.text',
+        'section.experiences',
+        'content.text-experience',
+        'content.text-itinerary',
+        'content.text-guide',
+        'content.text-location',
+      ]
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -598,7 +700,11 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::experience.experience'
     >;
-    label: Schema.Attribute.String;
+    guides: Schema.Attribute.Relation<'manyToMany', 'api::guide.guide'>;
+    itineraries: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::itinerary.itinerary'
+    >;
     lat: Schema.Attribute.String;
     lng: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -607,7 +713,10 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
       'api::location.location'
     > &
       Schema.Attribute.Private;
+    location: Schema.Attribute.Relation<'manyToOne', 'api::location.location'>;
+    locations: Schema.Attribute.Relation<'oneToMany', 'api::location.location'>;
     name: Schema.Attribute.String;
+    pin: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'meta.seo', false>;
     slug: Schema.Attribute.String;
@@ -634,26 +743,26 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   attributes: {
     components: Schema.Attribute.DynamicZone<
       [
-        'section.trails',
+        'section.itineraries',
         'section.places-page',
         'section.page-break',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
-        'section.highlights',
         'section.highlights-page',
         'section.highlights-guide-v2',
         'section.banners-page',
-        'section.banner-full',
         'media.single-image',
         'media.popup',
-        'media.gallery',
-        'media.banner-marketing',
-        'media.banner-campaign',
         'cta.button',
         'lead.form',
         'content.widget',
         'content.text',
+        'section.experiences',
+        'content.text-experience',
+        'content.text-itinerary',
+        'content.text-guide',
+        'content.text-location',
       ]
     >;
     coverDesktop: Schema.Attribute.Media<
@@ -682,76 +791,38 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiTrailTrail extends Struct.CollectionTypeSchema {
-  collectionName: 'trails';
+export interface ApiVideoVideo extends Struct.CollectionTypeSchema {
+  collectionName: 'videos';
   info: {
-    displayName: 'trail';
-    pluralName: 'trails';
-    singularName: 'trail';
+    displayName: 'video';
+    pluralName: 'videos';
+    singularName: 'video';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    categories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::category.category'
-    >;
-    components: Schema.Attribute.DynamicZone<
-      [
-        'section.trails',
-        'section.places-page',
-        'section.page-break',
-        'section.categories-pages',
-        'section.locations-page',
-        'section.locations-map',
-        'section.highlights',
-        'section.highlights-page',
-        'section.highlights-guide-v2',
-        'section.banners-page',
-        'section.banner-full',
-        'media.single-image',
-        'media.popup',
-        'media.gallery',
-        'media.banner-marketing',
-        'media.banner-campaign',
-        'cta.button',
-        'lead.form',
-        'content.widget',
-        'content.text',
-      ]
-    >;
-    coverCard: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    coverDesktop: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    coverMobile: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.RichText;
-    editorSignature: Schema.Attribute.Enumeration<
-      ['inicio-da-pagina', 'final-da-pagina']
+    description: Schema.Attribute.Blocks;
+    experiences: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::experience.experience'
     >;
-    forms: Schema.Attribute.Component<'lead.form', true>;
-    gallery: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    guides: Schema.Attribute.Relation<'oneToMany', 'api::guide.guide'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::trail.trail'> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::video.video'> &
       Schema.Attribute.Private;
+    provider: Schema.Attribute.Enumeration<['youtube']>;
     publishedAt: Schema.Attribute.DateTime;
-    readTime: Schema.Attribute.String;
-    resume: Schema.Attribute.RichText;
-    seo: Schema.Attribute.Component<'meta.seo', false>;
-    slug: Schema.Attribute.String;
-    titlle: Schema.Attribute.String;
+    thumbUrl: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['default', 'shorts']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    videoId: Schema.Attribute.String;
   };
 }
 
@@ -1267,9 +1338,10 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::experience.experience': ApiExperienceExperience;
       'api::guide.guide': ApiGuideGuide;
+      'api::itinerary.itinerary': ApiItineraryItinerary;
       'api::location.location': ApiLocationLocation;
       'api::page.page': ApiPagePage;
-      'api::trail.trail': ApiTrailTrail;
+      'api::video.video': ApiVideoVideo;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

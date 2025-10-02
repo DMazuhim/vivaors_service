@@ -43,26 +43,6 @@
         "audios"
       ]
     },
-    "bannerMobile": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "bannerDesktop": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "icon": {
       "type": "media",
       "multiple": false,
@@ -73,22 +53,16 @@
         "audios"
       ]
     },
-    "guides": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::guide.guide",
-      "inversedBy": "categories"
-    },
     "experiences": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::experience.experience",
       "inversedBy": "categories"
     },
-    "trails": {
+    "itineraries": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::trail.trail",
+      "target": "api::itinerary.itinerary",
       "inversedBy": "categories"
     }
   }

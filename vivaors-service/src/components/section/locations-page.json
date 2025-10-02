@@ -8,12 +8,12 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true,
       "pluginOptions": {
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "required": true
     },
     "subtitle": {
       "type": "string",
@@ -32,25 +32,6 @@
           "translate": "translate"
         }
       }
-    },
-    "location": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::location.location",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "titleSize": {
-      "type": "enumeration",
-      "enum": [
-        "grande",
-        "medio",
-        "pequeno"
-      ],
-      "default": "medio"
     },
     "redirectUrl": {
       "type": "string"
