@@ -11,16 +11,6 @@
       "component": "section.itineraries",
       "repeatable": true
     },
-    "placesPage": {
-      "type": "component",
-      "component": "section.places-page",
-      "repeatable": true
-    },
-    "pageBreak": {
-      "type": "component",
-      "component": "section.page-break",
-      "repeatable": true
-    },
     "categories": {
       "type": "component",
       "component": "section.categories-pages",
