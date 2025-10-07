@@ -1,22 +1,23 @@
 {
-  "collectionName": "components_content_widgets",
-  "info": {
-    "displayName": "widget",
-    "icon": "grid"
-  },
-  "options": {},
-  "attributes": {
-    "title": {
-      "type": "string"
+    "collectionName": "components_content_widgets",
+    "info": {
+        "displayName": "widget",
+        "icon": "grid"
     },
-    "script": {
-      "type": "text"
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "captor-de-leads"
-      ]
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "value": {
+            "type": "text"
+        },
+        "type": {
+            "type": "enumeration",
+            "enum": [
+                "form",
+                "widget"
+            ]
+        }
     }
-  }
 }

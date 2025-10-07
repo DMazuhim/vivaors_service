@@ -1,25 +1,25 @@
 {
-  "collectionName": "components_content_text_experiences",
-  "info": {
-    "displayName": "textExperience",
-    "icon": "pencil"
-  },
-  "options": {},
-  "attributes": {
-    "title": {
-      "type": "string"
+    "collectionName": "components_content_text_experiences",
+    "info": {
+        "displayName": "textExperience",
+        "icon": "pencil"
     },
-    "subtitle": {
-      "type": "string"
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "subtitle": {
+            "type": "string"
+        },
+        "text": {
+            "type": "blocks"
+        },
+        "experience": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::experience.experience"
+        }
     },
-    "text": {
-      "type": "blocks"
-    },
-    "experience": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::experience.experience"
-    }
-  },
-  "config": {}
+    "config": {}
 }

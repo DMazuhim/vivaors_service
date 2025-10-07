@@ -1,52 +1,52 @@
 {
-  "kind": "collectionType",
-  "collectionName": "videos",
-  "info": {
-    "singularName": "video",
-    "pluralName": "videos",
-    "displayName": "video"
-  },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {},
-  "attributes": {
-    "title": {
-      "type": "string"
+    "kind": "collectionType",
+    "collectionName": "videos",
+    "info": {
+        "singularName": "video",
+        "pluralName": "videos",
+        "displayName": "video"
     },
-    "videoId": {
-      "type": "string"
+    "options": {
+        "draftAndPublish": true
     },
-    "thumbUrl": {
-      "type": "string"
-    },
-    "description": {
-      "type": "blocks"
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "default",
-        "shorts"
-      ]
-    },
-    "provider": {
-      "type": "enumeration",
-      "enum": [
-        "youtube"
-      ]
-    },
-    "guides": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::guide.guide",
-      "mappedBy": "video"
-    },
-    "experiences": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::experience.experience",
-      "mappedBy": "video"
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "videoId": {
+            "type": "string"
+        },
+        "thumbUrl": {
+            "type": "string"
+        },
+        "description": {
+            "type": "blocks"
+        },
+        "type": {
+            "type": "enumeration",
+            "enum": [
+                "default",
+                "shorts"
+            ]
+        },
+        "provider": {
+            "type": "enumeration",
+            "enum": [
+                "youtube"
+            ]
+        },
+        "guides": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::guide.guide",
+            "mappedBy": "video"
+        },
+        "experiences": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::experience.experience",
+            "mappedBy": "video"
+        }
     }
-  }
 }

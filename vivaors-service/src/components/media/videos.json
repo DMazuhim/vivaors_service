@@ -1,22 +1,22 @@
 {
-  "collectionName": "components_media_videos",
-  "info": {
-    "displayName": "videos",
-    "icon": "play"
-  },
-  "options": {},
-  "attributes": {
-    "videos": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::video.video"
+    "collectionName": "components_media_videos",
+    "info": {
+        "displayName": "videos",
+        "icon": "play"
     },
-    "title": {
-      "type": "string"
+    "options": {},
+    "attributes": {
+        "videos": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::video.video"
+        },
+        "title": {
+            "type": "string"
+        },
+        "subtitle": {
+            "type": "string"
+        }
     },
-    "subtitle": {
-      "type": "string"
-    }
-  },
-  "config": {}
+    "config": {}
 }

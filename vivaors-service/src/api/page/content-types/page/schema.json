@@ -1,85 +1,81 @@
 {
-  "kind": "collectionType",
-  "collectionName": "pages",
-  "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "page"
-  },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {},
-  "attributes": {
-    "title": {
-      "type": "string"
+    "kind": "collectionType",
+    "collectionName": "pages",
+    "info": {
+        "singularName": "page",
+        "pluralName": "pages",
+        "displayName": "page"
     },
-    "slug": {
-      "type": "string"
+    "options": {
+        "draftAndPublish": true
     },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "campanha",
-        "agenda",
-        "pagina",
-        "blog"
-      ]
-    },
-    "popup": {
-      "type": "component",
-      "component": "media.popup",
-      "repeatable": false
-    },
-    "seo": {
-      "type": "component",
-      "component": "meta.seo",
-      "repeatable": false
-    },
-    "coverDesktop": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "coverMobile": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "components": {
-      "type": "dynamiczone",
-      "components": [
-        "section.itineraries",
-        "section.places-page",
-        "section.page-break",
-        "section.categories-pages",
-        "section.locations-page",
-        "section.locations-map",
-        "section.highlights-page",
-        "section.highlights-guide-v2",
-        "section.banners-page",
-        "media.single-image",
-        "media.popup",
-        "cta.button",
-        "lead.form",
-        "content.widget",
-        "content.text",
-        "section.experiences",
-        "content.text-experience",
-        "content.text-itinerary",
-        "content.text-guide",
-        "content.text-location"
-      ]
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "slug": {
+            "type": "string"
+        },
+        "type": {
+            "type": "enumeration",
+            "enum": [
+                "campanha",
+                "agenda",
+                "pagina",
+                "blog"
+            ]
+        },
+        "popup": {
+            "type": "component",
+            "component": "media.popup",
+            "repeatable": false
+        },
+        "seo": {
+            "type": "component",
+            "component": "meta.seo",
+            "repeatable": false
+        },
+        "coverDesktop": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "coverMobile": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "components": {
+            "type": "dynamiczone",
+            "components": [
+                "section.itineraries",
+                "section.categories-pages",
+                "section.locations-page",
+                "section.locations-map",
+                "section.highlights-page",
+                "section.banners-page",
+                "media.single-image",
+                "media.popup",
+                "cta.button",
+                "content.widget",
+                "content.text",
+                "section.experiences",
+                "content.text-experience",
+                "content.text-itinerary",
+                "content.text-guide",
+                "content.text-location"
+            ]
+        }
     }
-  }
 }

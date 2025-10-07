@@ -1,40 +1,40 @@
 {
-  "collectionName": "components_cta_buttons",
-  "info": {
-    "displayName": "Botão",
-    "icon": "toggle-on",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "label": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
+    "collectionName": "components_cta_buttons",
+    "info": {
+        "displayName": "Botão",
+        "icon": "toggle-on",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "label": {
+            "type": "string",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            },
+            "required": true
+        },
+        "url": {
+            "type": "string",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "copy"
+                }
+            },
+            "required": true
+        },
+        "position": {
+            "type": "enumeration",
+            "enum": [
+                "left",
+                "center",
+                "right"
+            ]
+        },
+        "subtitle": {
+            "type": "string"
         }
-      },
-      "required": true
-    },
-    "url": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "copy"
-        }
-      },
-      "required": true
-    },
-    "position": {
-      "type": "enumeration",
-      "enum": [
-        "left",
-        "center",
-        "right"
-      ]
-    },
-    "subtitle": {
-      "type": "string"
     }
-  }
 }

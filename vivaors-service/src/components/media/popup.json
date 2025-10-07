@@ -1,20 +1,20 @@
 {
-  "collectionName": "components_media_popups",
-  "info": {
-    "displayName": "popup",
-    "icon": "landscape"
-  },
-  "options": {},
-  "attributes": {
-    "title": {
-      "type": "string"
+    "collectionName": "components_media_popups",
+    "info": {
+        "displayName": "popup",
+        "icon": "landscape"
     },
-    "url": {
-      "type": "string"
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "url": {
+            "type": "string"
+        },
+        "duration": {
+            "type": "integer"
+        }
     },
-    "duration": {
-      "type": "integer"
-    }
-  },
-  "config": {}
+    "config": {}
 }

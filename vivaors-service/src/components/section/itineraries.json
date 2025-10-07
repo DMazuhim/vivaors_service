@@ -1,40 +1,40 @@
 {
-  "collectionName": "components_sections_trails",
-  "info": {
-    "displayName": "Roteiros&Listas",
-    "icon": "tasks",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "title": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
+    "collectionName": "components_sections_trails",
+    "info": {
+        "displayName": "Roteiros&Listas",
+        "icon": "tasks",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            },
+            "required": true
+        },
+        "itineraries": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::itinerary.itinerary",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            }
+        },
+        "isCarousel": {
+            "type": "boolean",
+            "default": true
+        },
+        "redirectUrl": {
+            "type": "string"
+        },
+        "subtitle": {
+            "type": "string"
         }
-      },
-      "required": true
-    },
-    "itineraries": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::itinerary.itinerary",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "isCarousel": {
-      "type": "boolean",
-      "default": true
-    },
-    "redirectUrl": {
-      "type": "string"
-    },
-    "subtitle": {
-      "type": "string"
     }
-  }
 }

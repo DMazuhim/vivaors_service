@@ -1,25 +1,25 @@
 {
-  "collectionName": "components_content_text_locations",
-  "info": {
-    "displayName": "textLocation",
-    "icon": "pencil"
-  },
-  "options": {},
-  "attributes": {
-    "title": {
-      "type": "string"
+    "collectionName": "components_content_text_locations",
+    "info": {
+        "displayName": "textLocation",
+        "icon": "pencil"
     },
-    "subtitle": {
-      "type": "string"
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "subtitle": {
+            "type": "string"
+        },
+        "text": {
+            "type": "blocks"
+        },
+        "location": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::location.location"
+        }
     },
-    "text": {
-      "type": "blocks"
-    },
-    "location": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::location.location"
-    }
-  },
-  "config": {}
+    "config": {}
 }

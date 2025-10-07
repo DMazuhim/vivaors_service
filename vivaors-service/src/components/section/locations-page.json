@@ -1,40 +1,40 @@
 {
-  "collectionName": "components_sections_locations_pages",
-  "info": {
-    "displayName": "Seção cidades, rotas e regiões",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "title": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "required": true
+    "collectionName": "components_sections_locations_pages",
+    "info": {
+        "displayName": "Seção cidades, rotas e regiões",
+        "description": ""
     },
-    "subtitle": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            },
+            "required": true
+        },
+        "subtitle": {
+            "type": "string",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            }
+        },
+        "locations": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::location.location",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            }
+        },
+        "redirectUrl": {
+            "type": "string"
         }
-      }
-    },
-    "locations": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::location.location",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "redirectUrl": {
-      "type": "string"
     }
-  }
 }

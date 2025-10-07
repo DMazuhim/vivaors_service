@@ -1,125 +1,121 @@
 {
-  "kind": "collectionType",
-  "collectionName": "locations",
-  "info": {
-    "singularName": "location",
-    "pluralName": "locations",
-    "displayName": "location"
-  },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {},
-  "attributes": {
-    "name": {
-      "type": "string"
+    "kind": "collectionType",
+    "collectionName": "locations",
+    "info": {
+        "singularName": "location",
+        "pluralName": "locations",
+        "displayName": "location"
     },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "city",
-        "route",
-        "region",
-        "neighborhood"
-      ]
+    "options": {
+        "draftAndPublish": true
     },
-    "lat": {
-      "type": "string"
-    },
-    "lng": {
-      "type": "string"
-    },
-    "bannerMobile": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "bannerDesktop": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "slug": {
-      "type": "string"
-    },
-    "description": {
-      "type": "blocks"
-    },
-    "tagline": {
-      "type": "string"
-    },
-    "seo": {
-      "type": "component",
-      "component": "meta.seo",
-      "repeatable": false
-    },
-    "experiences": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::experience.experience",
-      "mappedBy": "locations"
-    },
-    "pin": {
-      "type": "string"
-    },
-    "itineraries": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::itinerary.itinerary",
-      "inversedBy": "locations"
-    },
-    "guides": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::guide.guide",
-      "mappedBy": "locations"
-    },
-    "locations": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::location.location",
-      "mappedBy": "location"
-    },
-    "location": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::location.location",
-      "inversedBy": "locations"
-    },
-    "components": {
-      "type": "dynamiczone",
-      "components": [
-        "section.itineraries",
-        "section.places-page",
-        "section.page-break",
-        "section.categories-pages",
-        "section.locations-page",
-        "section.locations-map",
-        "section.highlights-page",
-        "section.highlights-guide-v2",
-        "section.banners-page",
-        "media.single-image",
-        "media.popup",
-        "cta.button",
-        "lead.form",
-        "content.widget",
-        "content.text",
-        "section.experiences",
-        "content.text-experience",
-        "content.text-itinerary",
-        "content.text-guide",
-        "content.text-location"
-      ]
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string"
+        },
+        "type": {
+            "type": "enumeration",
+            "enum": [
+                "city",
+                "route",
+                "region",
+                "neighborhood"
+            ]
+        },
+        "lat": {
+            "type": "string"
+        },
+        "lng": {
+            "type": "string"
+        },
+        "bannerMobile": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "bannerDesktop": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "slug": {
+            "type": "string"
+        },
+        "description": {
+            "type": "blocks"
+        },
+        "tagline": {
+            "type": "string"
+        },
+        "seo": {
+            "type": "component",
+            "component": "meta.seo",
+            "repeatable": false
+        },
+        "experiences": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::experience.experience",
+            "mappedBy": "locations"
+        },
+        "pin": {
+            "type": "string"
+        },
+        "itineraries": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::itinerary.itinerary",
+            "inversedBy": "locations"
+        },
+        "guides": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::guide.guide",
+            "mappedBy": "locations"
+        },
+        "locations": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::location.location",
+            "mappedBy": "location"
+        },
+        "location": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::location.location",
+            "inversedBy": "locations"
+        },
+        "components": {
+            "type": "dynamiczone",
+            "components": [
+                "section.itineraries",
+                "section.categories-pages",
+                "section.locations-page",
+                "section.locations-map",
+                "section.highlights-page",
+                "section.banners-page",
+                "media.single-image",
+                "media.popup",
+                "cta.button",
+                "content.widget",
+                "content.text",
+                "section.experiences",
+                "content.text-experience",
+                "content.text-itinerary",
+                "content.text-guide",
+                "content.text-location"
+            ]
+        }
     }
-  }
 }

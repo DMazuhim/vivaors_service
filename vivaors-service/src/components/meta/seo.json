@@ -1,20 +1,20 @@
 {
-  "collectionName": "components_meta_seos",
-  "info": {
-    "displayName": "seo",
-    "icon": "search"
-  },
-  "options": {},
-  "attributes": {
-    "title": {
-      "type": "string"
+    "collectionName": "components_meta_seos",
+    "info": {
+        "displayName": "seo",
+        "icon": "search"
     },
-    "description": {
-      "type": "richtext"
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "keywords": {
+            "type": "richtext"
+        }
     },
-    "keywords": {
-      "type": "richtext"
-    }
-  },
-  "config": {}
+    "config": {}
 }

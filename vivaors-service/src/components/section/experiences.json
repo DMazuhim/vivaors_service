@@ -1,28 +1,28 @@
 {
-  "collectionName": "components_section_experiences",
-  "info": {
-    "displayName": "experiences",
-    "icon": "gate"
-  },
-  "options": {},
-  "attributes": {
-    "title": {
-      "type": "string"
+    "collectionName": "components_section_experiences",
+    "info": {
+        "displayName": "experiences",
+        "icon": "gate"
     },
-    "subtitle": {
-      "type": "string"
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "subtitle": {
+            "type": "string"
+        },
+        "isCarrousel": {
+            "type": "boolean"
+        },
+        "redirectUrl": {
+            "type": "string"
+        },
+        "experiences": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::experience.experience"
+        }
     },
-    "isCarrousel": {
-      "type": "boolean"
-    },
-    "redirectUrl": {
-      "type": "string"
-    },
-    "experiences": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::experience.experience"
-    }
-  },
-  "config": {}
+    "config": {}
 }
