@@ -2,5 +2,6 @@
 /**
  * category router
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = factoriescreateCoreRouter('api::category.category');
+const { createCoreRouter } = require('@strapi/strapi').factories;
+
+module.exports = createCoreRouter('api::category.category');

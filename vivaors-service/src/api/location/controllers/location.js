@@ -2,5 +2,6 @@
 /**
  * location controller
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = factoriescreateCoreController('api::location.location');
+const { createCoreController } = require('@strapi/strapi').factories;
+
+module.exports = createCoreController('api::location.location');

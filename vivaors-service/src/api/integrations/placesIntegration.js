@@ -1,6 +1,6 @@
-import axios from 'axios';
+const axios = require('axios');
 
-const headers = { headers: { Authorization: process.env.OLD_VIVA_TOKEN } };
+const headers = { headers: { Authorization: `Bearer ${process.env.OLD_VIVA_KEY}` } };
 const url = process.env.OLD_VIVA;
 
 class placesIntegration {
@@ -15,4 +15,4 @@ class placesIntegration {
   }
 }
 
-export default placesIntegration;
+module.exports = placesIntegration;

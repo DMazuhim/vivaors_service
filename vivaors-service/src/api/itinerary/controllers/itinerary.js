@@ -2,5 +2,6 @@
 /**
  * itinerary controller
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = factoriescreateCoreController('api::itinerary.itinerary');
+const { createCoreController } = require('@strapi/strapi').factories;
+
+module.exports = createCoreController('api::itinerary.itinerary');

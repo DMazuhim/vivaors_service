@@ -2,5 +2,6 @@
 /**
  * category controller
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = factoriescreateCoreController('api::category.category');
+const { createCoreController } = require('@strapi/strapi').factories;
+
+module.exports = createCoreController('api::category.category');

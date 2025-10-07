@@ -2,5 +2,6 @@
 /**
  * itinerary service
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = factoriescreateCoreService('api::itinerary.itinerary');
+const { createCoreService } = require('@strapi/strapi').factories;
+
+module.exports = createCoreService('api::itinerary.itinerary');

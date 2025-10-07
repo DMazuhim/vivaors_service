@@ -2,5 +2,6 @@
 /**
  * guide service
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = factoriescreateCoreService('api::guide.guide');
+const { createCoreService } = require('@strapi/strapi').factories;
+
+module.exports = createCoreService('api::guide.guide');

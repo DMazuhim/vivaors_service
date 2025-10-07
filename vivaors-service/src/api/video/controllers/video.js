@@ -2,5 +2,6 @@
 /**
  * video controller
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = factoriescreateCoreController('api::video.video');
+const { createCoreController } = require('@strapi/strapi').factories;
+
+module.exports = createCoreController('api::video.video');

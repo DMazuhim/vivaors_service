@@ -2,5 +2,6 @@
 /**
  * category service
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = factoriescreateCoreService('api::category.category');
+const { createCoreService } = require('@strapi/strapi').factories;
+
+module.exports = createCoreService('api::category.category');

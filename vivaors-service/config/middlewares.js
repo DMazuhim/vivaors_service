@@ -1,6 +1,6 @@
 // path: ./config/middlewares.ts
 
-export default [
+module.exports= [
   'strapi::logger',
   'strapi::errors',
   

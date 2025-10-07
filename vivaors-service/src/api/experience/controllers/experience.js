@@ -1,6 +1,8 @@
-("use strict");
+"use strict";
 
-const { createCoreController } = require("@strapi/strapi").factories;
+const { factories } = require('@strapi/strapi');
+
+const { createCoreController } = factories;
 
 module.exports = createCoreController("api::experience.experience", ({ strapi }) => ({
   async importPlaces(ctx) {

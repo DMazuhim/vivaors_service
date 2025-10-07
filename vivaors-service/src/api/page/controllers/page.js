@@ -2,5 +2,6 @@
 /**
  * page controller
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = factoriescreateCoreController('api::page.page');
+const { createCoreController } = require('@strapi/strapi').factories;
+
+module.exports = createCoreController('api::page.page');
