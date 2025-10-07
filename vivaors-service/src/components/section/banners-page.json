@@ -6,6 +6,11 @@
   },
   "options": {},
   "attributes": {
+    "banners": {
+      "type": "component",
+      "component": "media.banner-marketing",
+      "repeatable": true
+    },
     "redirectUrl": {
       "type": "string"
     },

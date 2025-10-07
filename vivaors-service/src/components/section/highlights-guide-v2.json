@@ -1,8 +1,8 @@
 {
-  "collectionName": "components_sections_highlights_pages",
+  "collectionName": "components_sections_highlights_guides",
   "info": {
-    "displayName": "Destaques de página",
-    "description": ""
+    "displayName": "highlightGuides",
+    "icon": "dashboard"
   },
   "options": {},
   "attributes": {
@@ -17,16 +17,7 @@
         "translate": {
           "translate": "translate"
         }
-      },
-      "required": true
-    },
-    "location": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::location.location"
-    },
-    "redirectUrl": {
-      "type": "string"
+      }
     },
     "subtitle": {
       "type": "string"

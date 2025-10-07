@@ -1,0 +1,83 @@
+{
+  "collectionName": "components_media_galleries",
+  "info": {
+    "displayName": "Galeria",
+    "icon": "images",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
+    },
+    "position": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ],
+      "default": "center",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "text": {
+      "type": "richtext",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "buttonLabel": {
+      "type": "string",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "buttonPosition": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ]
+    },
+    "buttonUrl": {
+      "type": "string",
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
+    },
+    "titleSize": {
+      "type": "enumeration",
+      "enum": [
+        "grande",
+        "medio",
+        "pequeno"
+      ],
+      "default": "medio"
+    }
+  }
+}

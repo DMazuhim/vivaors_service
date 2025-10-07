@@ -9,14 +9,13 @@
     "title": {
       "type": "string"
     },
-    "value": {
+    "script": {
       "type": "text"
     },
     "type": {
       "type": "enumeration",
       "enum": [
-        "form",
-        "widget"
+        "captor-de-leads"
       ]
     }
   }

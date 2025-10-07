@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_lead_forms",
+  "info": {
+    "displayName": "form",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -438,14 +438,18 @@ export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
     components: Schema.Attribute.DynamicZone<
       [
         'section.itineraries',
+        'section.places-page',
+        'section.page-break',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
         'section.highlights-page',
+        'section.highlights-guide-v2',
         'section.banners-page',
         'media.single-image',
         'media.popup',
         'cta.button',
+        'lead.form',
         'content.widget',
         'content.text',
         'section.experiences',
@@ -510,14 +514,18 @@ export interface ApiGuideGuide extends Struct.CollectionTypeSchema {
     components: Schema.Attribute.DynamicZone<
       [
         'section.itineraries',
+        'section.places-page',
+        'section.page-break',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
         'section.highlights-page',
+        'section.highlights-guide-v2',
         'section.banners-page',
         'media.single-image',
         'media.popup',
         'cta.button',
+        'lead.form',
         'content.widget',
         'content.text',
         'section.experiences',
@@ -581,14 +589,18 @@ export interface ApiItineraryItinerary extends Struct.CollectionTypeSchema {
     components: Schema.Attribute.DynamicZone<
       [
         'section.itineraries',
+        'section.places-page',
+        'section.page-break',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
         'section.highlights-page',
+        'section.highlights-guide-v2',
         'section.banners-page',
         'media.single-image',
         'media.popup',
         'cta.button',
+        'lead.form',
         'content.widget',
         'content.text',
         'section.experiences',
@@ -612,6 +624,7 @@ export interface ApiItineraryItinerary extends Struct.CollectionTypeSchema {
     editorSignature: Schema.Attribute.Enumeration<
       ['inicio-da-pagina', 'final-da-pagina']
     >;
+    forms: Schema.Attribute.Component<'lead.form', true>;
     gallery: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -658,14 +671,18 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
     components: Schema.Attribute.DynamicZone<
       [
         'section.itineraries',
+        'section.places-page',
+        'section.page-break',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
         'section.highlights-page',
+        'section.highlights-guide-v2',
         'section.banners-page',
         'media.single-image',
         'media.popup',
         'cta.button',
+        'lead.form',
         'content.widget',
         'content.text',
         'section.experiences',
@@ -727,14 +744,18 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     components: Schema.Attribute.DynamicZone<
       [
         'section.itineraries',
+        'section.places-page',
+        'section.page-break',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
         'section.highlights-page',
+        'section.highlights-guide-v2',
         'section.banners-page',
         'media.single-image',
         'media.popup',
         'cta.button',
+        'lead.form',
         'content.widget',
         'content.text',
         'section.experiences',
@@ -1260,6 +1281,7 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
+    timestamps: true;
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -1291,7 +1313,6 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    type: Schema.Attribute.Enumeration<['default', 'editor']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

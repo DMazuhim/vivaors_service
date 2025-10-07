@@ -66,6 +66,11 @@
         "audios"
       ]
     },
+    "forms": {
+      "type": "component",
+      "component": "lead.form",
+      "repeatable": true
+    },
     "seo": {
       "type": "component",
       "component": "meta.seo",
@@ -88,14 +93,18 @@
       "type": "dynamiczone",
       "components": [
         "section.itineraries",
+        "section.places-page",
+        "section.page-break",
         "section.categories-pages",
         "section.locations-page",
         "section.locations-map",
         "section.highlights-page",
+        "section.highlights-guide-v2",
         "section.banners-page",
         "media.single-image",
         "media.popup",
         "cta.button",
+        "lead.form",
         "content.widget",
         "content.text",
         "section.experiences",

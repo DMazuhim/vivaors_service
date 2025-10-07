@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_media_banner_campaigns",
+  "info": {
+    "displayName": "bannerCampaign",
+    "icon": "film",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "coverDesktop": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
+    },
+    "url": {
+      "type": "string",
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
+    },
+    "coverMobile": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
+    }
+  }
+}
