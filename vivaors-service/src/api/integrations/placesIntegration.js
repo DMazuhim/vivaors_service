@@ -5,13 +5,9 @@ const url = process.env.OLD_VIVA;
 
 class placesIntegration {
   static async fetchPlaces() {
-    try {
-      const fullUrl = `${url}/places`;
+      const fullUrl = `${url}/places?populate=*&pagination[pageSize]=1000`;
       const response = await axios.get(fullUrl, headers);
       return response.data;
-    } catch (error) {
-      integrationError({ origin: 'GET SAMPLES', error });
-    }
   }
 }
 

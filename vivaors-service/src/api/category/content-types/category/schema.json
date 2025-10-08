@@ -1,69 +1,69 @@
 {
-    "kind": "collectionType",
-    "collectionName": "categories",
-    "info": {
-        "singularName": "category",
-        "pluralName": "categories",
-        "displayName": "category"
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "category"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
     },
-    "options": {
-        "draftAndPublish": true
+    "slug": {
+      "type": "string"
     },
-    "pluginOptions": {},
-    "attributes": {
-        "title": {
-            "type": "string"
-        },
-        "slug": {
-            "type": "string"
-        },
-        "description": {
-            "type": "richtext"
-        },
-        "color": {
-            "type": "string"
-        },
-        "coverDesktop": {
-            "type": "media",
-            "multiple": false,
-            "allowedTypes": [
-                "images",
-                "files",
-                "videos",
-                "audios"
-            ]
-        },
-        "coverMobile": {
-            "type": "media",
-            "multiple": false,
-            "allowedTypes": [
-                "images",
-                "files",
-                "videos",
-                "audios"
-            ]
-        },
-        "icon": {
-            "type": "media",
-            "multiple": false,
-            "allowedTypes": [
-                "images",
-                "files",
-                "videos",
-                "audios"
-            ]
-        },
-        "experiences": {
-            "type": "relation",
-            "relation": "manyToMany",
-            "target": "api::experience.experience",
-            "inversedBy": "categories"
-        },
-        "itineraries": {
-            "type": "relation",
-            "relation": "manyToMany",
-            "target": "api::itinerary.itinerary",
-            "inversedBy": "categories"
-        }
+    "description": {
+      "type": "richtext"
+    },
+    "color": {
+      "type": "string"
+    },
+    "coverDesktop": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "coverMobile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "experiences": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::experience.experience",
+      "inversedBy": "categories"
+    },
+    "itineraries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::itinerary.itinerary",
+      "inversedBy": "categories"
     }
+  }
 }

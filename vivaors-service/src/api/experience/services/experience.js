@@ -1,11 +1,11 @@
 "use strict";
 
 const { createCoreService } = require("@strapi/strapi").factories;
-const placesIntegration = require("../../integrations/placesIntegration")
+const placesService = require("../../integrations/placesServices")
 
-module.exports = createCoreService("api::place.place", ({ strapi }) => ({
+module.exports = createCoreService("api::experience.experience", ({ strapi }) => ({
   async importPlaces() {
-    const places = await placesIntegration.fetchPlaces();
+    const places = await placesService.fetchPlaces();
 
     return places;
   }
