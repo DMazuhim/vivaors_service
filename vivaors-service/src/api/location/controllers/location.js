@@ -1,7 +1,11 @@
 "use strict";
-/**
- * location controller
- */
-const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::location.location');
+const { factories } = require('@strapi/strapi');
+
+const { createCoreController } = factories;
+
+module.exports = createCoreController("api::location.location", ({ strapi }) => ({
+  async importLocations() {
+    return strapi.service("api::location.location").importLocations();
+  }
+}));

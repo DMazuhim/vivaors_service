@@ -1,115 +1,115 @@
 {
-    "kind": "collectionType",
-    "collectionName": "itineraries",
-    "info": {
-        "singularName": "itinerary",
-        "pluralName": "itineraries",
-        "displayName": "itinerary"
+  "kind": "collectionType",
+  "collectionName": "itineraries",
+  "info": {
+    "singularName": "itinerary",
+    "pluralName": "itineraries",
+    "displayName": "itinerary"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titlle": {
+      "type": "string"
     },
-    "options": {
-        "draftAndPublish": true
+    "slug": {
+      "type": "string"
     },
-    "pluginOptions": {},
-    "attributes": {
-        "titlle": {
-            "type": "string"
-        },
-        "slug": {
-            "type": "string"
-        },
-        "description": {
-            "type": "richtext"
-        },
-        "resume": {
-            "type": "richtext"
-        },
-        "readTime": {
-            "type": "string"
-        },
-        "coverMobile": {
-            "type": "media",
-            "multiple": false,
-            "allowedTypes": [
-                "images",
-                "files",
-                "videos",
-                "audios"
-            ]
-        },
-        "coverDesktop": {
-            "type": "media",
-            "multiple": false,
-            "allowedTypes": [
-                "images",
-                "files",
-                "videos",
-                "audios"
-            ]
-        },
-        "coverCard": {
-            "type": "media",
-            "multiple": false,
-            "allowedTypes": [
-                "images",
-                "files",
-                "videos",
-                "audios"
-            ]
-        },
-        "gallery": {
-            "type": "media",
-            "multiple": true,
-            "allowedTypes": [
-                "images",
-                "files",
-                "videos",
-                "audios"
-            ]
-        },
-        "seo": {
-            "type": "component",
-            "component": "meta.seo",
-            "repeatable": false
-        },
-        "editorSignature": {
-            "type": "enumeration",
-            "enum": [
-                "inicio-da-pagina",
-                "final-da-pagina"
-            ]
-        },
-        "categories": {
-            "type": "relation",
-            "relation": "manyToMany",
-            "target": "api::category.category",
-            "mappedBy": "itineraries"
-        },
-        "components": {
-            "type": "dynamiczone",
-            "components": [
-                "section.itineraries",
-                "section.categories-pages",
-                "section.locations-page",
-                "section.locations-map",
-                "section.highlights-page",
-                "section.banners-page",
-                "media.single-image",
-                "media.popup",
-                "cta.button",
-                "content.widget",
-                "content.text",
-                "section.experiences",
-                "content.text-experience",
-                "content.text-itinerary",
-                "content.text-guide",
-                "content.text-location"
-            ]
-        },
-        "locations": {
-            "type": "relation",
-            "relation": "manyToMany",
-            "target": "api::location.location",
-            "mappedBy": "itineraries"
-        }
+    "description": {
+      "type": "richtext"
+    },
+    "resume": {
+      "type": "richtext"
+    },
+    "readTime": {
+      "type": "string"
+    },
+    "coverMobile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "coverDesktop": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "coverCard": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "component": "meta.seo",
+      "repeatable": false
+    },
+    "editorSignature": {
+      "type": "enumeration",
+      "enum": [
+        "inicio-da-pagina",
+        "final-da-pagina"
+      ]
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "itineraries"
+    },
+    "components": {
+      "type": "dynamiczone",
+      "components": [
+        "section.itineraries",
+        "section.categories-pages",
+        "section.locations-page",
+        "section.locations-map",
+        "section.highlights-page",
+        "section.banners-page",
+        "media.single-image",
+        "media.popup",
+        "cta.button",
+        "content.widget",
+        "content.text",
+        "section.experiences",
+        "content.text-experience",
+        "content.text-itinerary",
+        "content.text-guide",
+        "content.text-location"
+      ]
+    },
+    "locations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::location.location",
+      "mappedBy": "itineraries"
     }
+  }
 }

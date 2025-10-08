@@ -1,110 +1,110 @@
 {
-    "kind": "collectionType",
-    "collectionName": "guides",
-    "info": {
-        "singularName": "guide",
-        "pluralName": "guides",
-        "displayName": "guide"
+  "kind": "collectionType",
+  "collectionName": "guides",
+  "info": {
+    "singularName": "guide",
+    "pluralName": "guides",
+    "displayName": "guide"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
     },
-    "options": {
-        "draftAndPublish": true
+    "label": {
+      "type": "string"
     },
-    "pluginOptions": {},
-    "attributes": {
-        "title": {
-            "type": "string"
-        },
-        "label": {
-            "type": "string"
-        },
-        "subtitle": {
-            "type": "string"
-        },
-        "slug": {
-            "type": "string"
-        },
-        "coverDesktop": {
-            "type": "media",
-            "multiple": false,
-            "allowedTypes": [
-                "images",
-                "files",
-                "videos",
-                "audios"
-            ]
-        },
-        "coverMobile": {
-            "type": "media",
-            "multiple": false,
-            "allowedTypes": [
-                "images",
-                "files",
-                "videos",
-                "audios"
-            ]
-        },
-        "coverCardMobile": {
-            "type": "media",
-            "multiple": false,
-            "allowedTypes": [
-                "images",
-                "files",
-                "videos",
-                "audios"
-            ]
-        },
-        "coverCardDesktop": {
-            "type": "media",
-            "multiple": false,
-            "allowedTypes": [
-                "images",
-                "files",
-                "videos",
-                "audios"
-            ]
-        },
-        "highlights": {
-            "type": "component",
-            "component": "section.highlights",
-            "repeatable": false
-        },
-        "seo": {
-            "type": "component",
-            "component": "meta.seo",
-            "repeatable": false
-        },
-        "components": {
-            "type": "dynamiczone",
-            "components": [
-                "section.itineraries",
-                "section.categories-pages",
-                "section.locations-page",
-                "section.locations-map",
-                "section.highlights-page",
-                "section.banners-page",
-                "media.single-image",
-                "media.popup",
-                "cta.button",
-                "content.widget",
-                "content.text",
-                "section.experiences",
-                "content.text-experience",
-                "content.text-itinerary",
-                "content.text-guide",
-                "content.text-location"
-            ]
-        },
-        "locations": {
-            "type": "relation",
-            "relation": "manyToMany",
-            "target": "api::location.location",
-            "inversedBy": "guides"
-        },
-        "video": {
-            "type": "relation",
-            "relation": "manyToOne",
-            "target": "api::video.video",
-            "inversedBy": "guides"
-        }
+    "subtitle": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "coverDesktop": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "coverMobile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "coverCardMobile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "coverCardDesktop": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "highlights": {
+      "type": "component",
+      "component": "section.highlights",
+      "repeatable": false
+    },
+    "seo": {
+      "type": "component",
+      "component": "meta.seo",
+      "repeatable": false
+    },
+    "components": {
+      "type": "dynamiczone",
+      "components": [
+        "section.itineraries",
+        "section.categories-pages",
+        "section.locations-page",
+        "section.locations-map",
+        "section.highlights-page",
+        "section.banners-page",
+        "media.single-image",
+        "media.popup",
+        "cta.button",
+        "content.widget",
+        "content.text",
+        "section.experiences",
+        "content.text-experience",
+        "content.text-itinerary",
+        "content.text-guide",
+        "content.text-location"
+      ]
+    },
+    "locations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::location.location",
+      "inversedBy": "guides"
+    },
+    "video": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::video.video",
+      "inversedBy": "guides"
     }
+  }
 }

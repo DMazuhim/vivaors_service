@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-10-08T19:00:59.798Z"
+    "x-generation-date": "2025-10-08T20:39:46.180Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -6378,7 +6378,6 @@
                       "slug": {
                         "type": "string"
                       },
-                      "description": {},
                       "tagline": {
                         "type": "string"
                       },
@@ -7707,6 +7706,9 @@
                             "content.text-location": "#/components/schemas/ContentTextLocationComponent"
                           }
                         }
+                      },
+                      "description": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
@@ -9716,7 +9718,6 @@
                                   "slug": {
                                     "type": "string"
                                   },
-                                  "description": {},
                                   "tagline": {
                                     "type": "string"
                                   },
@@ -9868,6 +9869,9 @@
                                         "content.text-location": "#/components/schemas/ContentTextLocationComponent"
                                       }
                                     }
+                                  },
+                                  "description": {
+                                    "type": "string"
                                   },
                                   "createdAt": {
                                     "type": "string",
@@ -12754,7 +12758,6 @@
                 "slug": {
                   "type": "string"
                 },
-                "description": {},
                 "tagline": {
                   "type": "string"
                 },
@@ -14672,6 +14675,9 @@
                       "content.text-location": "#/components/schemas/ContentTextLocationComponent"
                     }
                   }
+                },
+                "description": {
+                  "type": "string"
                 },
                 "createdAt": {
                   "type": "string",
@@ -18694,7 +18700,6 @@
                             "slug": {
                               "type": "string"
                             },
-                            "description": {},
                             "tagline": {
                               "type": "string"
                             },
@@ -19545,6 +19550,9 @@
                                   "content.text-location": "#/components/schemas/ContentTextLocationComponent"
                                 }
                               }
+                            },
+                            "description": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -20422,7 +20430,6 @@
               "slug": {
                 "type": "string"
               },
-              "description": {},
               "tagline": {
                 "type": "string"
               },
@@ -20574,6 +20581,9 @@
                     "content.text-location": "#/components/schemas/ContentTextLocationComponent"
                   }
                 }
+              },
+              "description": {
+                "type": "string"
               },
               "locale": {
                 "type": "string"
@@ -21388,7 +21398,6 @@
           "slug": {
             "type": "string"
           },
-          "description": {},
           "tagline": {
             "type": "string"
           },
@@ -21726,7 +21735,6 @@
                       "slug": {
                         "type": "string"
                       },
-                      "description": {},
                       "tagline": {
                         "type": "string"
                       },
@@ -23056,6 +23064,9 @@
                           }
                         }
                       },
+                      "description": {
+                        "type": "string"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -23789,6 +23800,9 @@
                 "content.text-location": "#/components/schemas/ContentTextLocationComponent"
               }
             }
+          },
+          "description": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",

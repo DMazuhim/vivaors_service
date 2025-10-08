@@ -52,9 +52,6 @@
     "slug": {
       "type": "string"
     },
-    "description": {
-      "type": "blocks"
-    },
     "tagline": {
       "type": "string"
     },
@@ -116,6 +113,9 @@
         "content.text-guide",
         "content.text-location"
       ]
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }
