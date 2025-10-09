@@ -62,16 +62,16 @@ export interface ContentTextGuide extends Struct.ComponentSchema {
   };
 }
 
-export interface ContentTextItinerary extends Struct.ComponentSchema {
-  collectionName: 'components_content_text_itineraries';
+export interface ContentTextcontent extends Struct.ComponentSchema {
+  collectionName: 'components_content_text_contents';
   info: {
-    displayName: 'textItinerary';
+    displayName: 'textcontent';
     icon: 'pencil';
   };
   attributes: {
-    itinerary: Schema.Attribute.Relation<
+    content: Schema.Attribute.Relation<
       'oneToOne',
-      'api::itinerary.itinerary'
+      'api::content.content'
     >;
     subtitle: Schema.Attribute.String;
     text: Schema.Attribute.Blocks;
@@ -276,7 +276,7 @@ export interface SectionComponents extends Struct.ComponentSchema {
   };
   attributes: {
     categories: Schema.Attribute.Component<'section.categories-pages', true>;
-    sectionTrails: Schema.Attribute.Component<'section.itineraries', true>;
+    sectionTrails: Schema.Attribute.Component<'section.contents', true>;
   };
 }
 
@@ -357,7 +357,7 @@ export interface SectionHighlightsPage extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionItineraries extends Struct.ComponentSchema {
+export interface Sectioncontents extends Struct.ComponentSchema {
   collectionName: 'components_sections_trails';
   info: {
     description: '';
@@ -366,9 +366,9 @@ export interface SectionItineraries extends Struct.ComponentSchema {
   };
   attributes: {
     isCarousel: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    itineraries: Schema.Attribute.Relation<
+    contents: Schema.Attribute.Relation<
       'oneToMany',
-      'api::itinerary.itinerary'
+      'api::content.content'
     > &
       Schema.Attribute.SetPluginOptions<{
         translate: {
@@ -465,7 +465,7 @@ declare module '@strapi/strapi' {
       'content.text': ContentText;
       'content.text-experience': ContentTextExperience;
       'content.text-guide': ContentTextGuide;
-      'content.text-itinerary': ContentTextItinerary;
+      'content.text-content': ContentTextcontent;
       'content.text-location': ContentTextLocation;
       'content.widget': ContentWidget;
       'cta.button': CtaButton;
@@ -479,7 +479,7 @@ declare module '@strapi/strapi' {
       'section.experiences': SectionExperiences;
       'section.highlights': SectionHighlights;
       'section.highlights-page': SectionHighlightsPage;
-      'section.itineraries': SectionItineraries;
+      'section.contents': Sectioncontents;
       'section.locations-map': SectionLocationsMap;
       'section.locations-page': SectionLocationsPage;
     }

@@ -1,7 +1,11 @@
 "use strict";
-/**
- * guide controller
- */
-const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::guide.guide');
+const { factories } = require('@strapi/strapi');
+
+const { createCoreController } = factories;
+
+module.exports = createCoreController("api::guide.guide", ({ strapi }) => ({
+  async importGuides() {
+    return strapi.service("api::guide.guide").importGuides();
+  }
+}));

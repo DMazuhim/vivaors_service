@@ -91,7 +91,7 @@
     "components": {
       "type": "dynamiczone",
       "components": [
-        "section.itineraries",
+        "section.contents",
         "section.categories-pages",
         "section.locations-page",
         "section.locations-map",
@@ -104,7 +104,7 @@
         "content.text",
         "section.experiences",
         "content.text-experience",
-        "content.text-itinerary",
+        "content.text-content",
         "content.text-guide",
         "content.text-location"
       ]

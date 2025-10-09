@@ -8,7 +8,7 @@
     "attributes": {
         "sectionTrails": {
             "type": "component",
-            "component": "section.itineraries",
+            "component": "section.contents",
             "repeatable": true
         },
         "categories": {

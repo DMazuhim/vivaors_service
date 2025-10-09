@@ -20,9 +20,10 @@
         "type": {
             "type": "enumeration",
             "enum": [
-                "campanha",
-                "agenda",
+                "campanhas",
                 "pagina",
+                "agenda",
+                "home-loja",
                 "blog"
             ]
         },
@@ -59,7 +60,7 @@
         "components": {
             "type": "dynamiczone",
             "components": [
-                "section.itineraries",
+                "section.contents",
                 "section.categories-pages",
                 "section.locations-page",
                 "section.locations-map",
@@ -72,7 +73,7 @@
                 "content.text",
                 "section.experiences",
                 "content.text-experience",
-                "content.text-itinerary",
+                "content.text-content",
                 "content.text-guide",
                 "content.text-location"
             ]

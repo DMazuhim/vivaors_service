@@ -1,7 +1,7 @@
 {
-    "collectionName": "components_content_text_itineraries",
+    "collectionName": "components_content_text_contents",
     "info": {
-        "displayName": "textItinerary",
+        "displayName": "textcontent",
         "icon": "pencil"
     },
     "options": {},
@@ -15,10 +15,10 @@
         "text": {
             "type": "blocks"
         },
-        "itinerary": {
+        "content": {
             "type": "relation",
             "relation": "oneToOne",
-            "target": "api::itinerary.itinerary"
+            "target": "api::content.content"
         }
     },
     "config": {}

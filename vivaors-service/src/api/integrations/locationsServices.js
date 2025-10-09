@@ -5,6 +5,7 @@ const parseLocation = (location) => {
   const parsedComponents = mapDynamicZone(location?.contents);
 
   const dataToCreate = {
+    id: location?.id,
     name: location?.name,
     type: location?.type,
     lat: location?.lat,
@@ -12,14 +13,13 @@ const parseLocation = (location) => {
     slug: location?.slug,
     tagline: location?.tagline,
     pin: location?.pin,
-    description: location?.description,
+    description: location?.description,/*
     bannerMobile: location?.bannerMobile,
-    bannerDesktop: location?.bannerDesktop,
+    bannerDesktop: location?.bannerDesktop,*/
     components: parsedComponents,
     publishedAt: location?.publishedAt || new Date(),
   };
 
-  // Remove campos não necessários
   delete dataToCreate.id;
   delete dataToCreate.created_at;
   delete dataToCreate.updated_at;
@@ -40,10 +40,7 @@ module.exports = {
     await Promise.all(
       locationsToCreate.map(async (locationData) => {
         try {
-          await strapi.entityService.create('api::location.location', {
-            data: locationData,
-          });
-
+          await strapi.entityService.create('api::location.location', { data: locationData });
           console.log(`✅ Localização criada com sucesso: ${locationData.name || locationData.slug}`);
         } catch (error) {
           let errorMessage = error.message;
@@ -54,7 +51,18 @@ module.exports = {
               .join('; ');
           }
 
-          console.error(`❌ Falha ao criar localização "${locationData.name || 'Desconhecida'}": ${errorMessage}`);
+          if (errorMessage.includes('must be one of the following values')) {
+            if (errorMessage.includes('type')) locationData.type = '';
+            try {
+              await strapi.entityService.create('api::location.location', { data: locationData });
+              console.log(`✅ Localização criada (com campos vazios): ${locationData.name || locationData.slug}`);
+              return;
+            } catch (retryError) {
+              console.error(`❌ Ainda falhou ao criar "${locationData.name || 'Desconhecida'}" após limpeza: ${retryError.message}`);
+            }
+          } else {
+            console.error(`❌ Falha ao criar localização "${locationData.name || 'Desconhecida'}": ${errorMessage}`);
+          }
         }
       })
     );

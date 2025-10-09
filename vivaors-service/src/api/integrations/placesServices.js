@@ -24,8 +24,24 @@ module.exports = {
               .map((err) => `${err.path.join('.')} ${err.message}`)
               .join('; ');
           }
+          if (errorMessage.includes('must be one of the following values')) {
+            console.warn(`⚠️ Campo inválido detectado em "${experience.title || experience.slug}". Limpando campo problemático...`);
+            if (errorMessage.includes('tier')) experience.tier = '';
+            if (errorMessage.includes('relevance')) experience.relevance = null;
+            if (errorMessage.includes('seo')) experience.seo = null;
 
-          console.error(`❌ Falha ao criar experiência "${experience.title || 'Desconhecida'}": ${errorMessage}`);
+            try {
+              await strapi.entityService.create('api::experience.experience', {
+                data: experience,
+              });
+              console.log(`✅ Experiência criada (com campos vazios): ${experience.title || experience.slug}`);
+              return;
+            } catch (retryError) {
+              console.error(`❌ Ainda falhou ao criar "${experience.title || 'Desconhecida'}" após limpeza: ${retryError.message}`);
+            }
+          } else {
+            console.error(`❌ Falha ao criar experiência "${experience.title || 'Desconhecida'}": ${errorMessage}`);
+          }
         }
       })
     );
@@ -33,6 +49,7 @@ module.exports = {
 
   parsePlaceToExperience(place) {
     return {
+      id: place?.id,
       title: place?.name,
       slug: place?.slug,
       address: place?.address,
@@ -47,9 +64,9 @@ module.exports = {
       locations: (place?.locations || []).map(location => location.id),
       categories: (place?.categories || []).map(category => category.id),
       tags: (place?.tags || []).map(tag => tag.id),
-      coverDesktop: place?.coverDesktop,
+      /*coverDesktop: place?.coverDesktop,
       coverMobile: place?.coverMobile,
-      gallery: place?.gallery,
+      gallery: place?.gallery,*/
       components: mapDynamicZone(place?.components),
       publishedAt: place?.publishedAt || new Date(),
     };

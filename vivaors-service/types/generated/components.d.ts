@@ -31,6 +31,20 @@ export interface ContentText extends Struct.ComponentSchema {
   };
 }
 
+export interface ContentTextContent extends Struct.ComponentSchema {
+  collectionName: 'components_content_text_contents';
+  info: {
+    displayName: 'textcontent';
+    icon: 'pencil';
+  };
+  attributes: {
+    content: Schema.Attribute.Relation<'oneToOne', 'api::content.content'>;
+    subtitle: Schema.Attribute.String;
+    text: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ContentTextExperience extends Struct.ComponentSchema {
   collectionName: 'components_content_text_experiences';
   info: {
@@ -56,23 +70,6 @@ export interface ContentTextGuide extends Struct.ComponentSchema {
   };
   attributes: {
     guide: Schema.Attribute.Relation<'oneToOne', 'api::guide.guide'>;
-    subtitle: Schema.Attribute.String;
-    text: Schema.Attribute.Blocks;
-    title: Schema.Attribute.String;
-  };
-}
-
-export interface ContentTextItinerary extends Struct.ComponentSchema {
-  collectionName: 'components_content_text_itineraries';
-  info: {
-    displayName: 'textItinerary';
-    icon: 'pencil';
-  };
-  attributes: {
-    itinerary: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::itinerary.itinerary'
-    >;
     subtitle: Schema.Attribute.String;
     text: Schema.Attribute.Blocks;
     title: Schema.Attribute.String;
@@ -276,7 +273,34 @@ export interface SectionComponents extends Struct.ComponentSchema {
   };
   attributes: {
     categories: Schema.Attribute.Component<'section.categories-pages', true>;
-    sectionTrails: Schema.Attribute.Component<'section.itineraries', true>;
+    sectionTrails: Schema.Attribute.Component<'section.contents', true>;
+  };
+}
+
+export interface SectionContents extends Struct.ComponentSchema {
+  collectionName: 'components_sections_trails';
+  info: {
+    description: '';
+    displayName: 'Roteiros&Listas';
+    icon: 'tasks';
+  };
+  attributes: {
+    contents: Schema.Attribute.Relation<'oneToMany', 'api::content.content'> &
+      Schema.Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    isCarousel: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    redirectUrl: Schema.Attribute.String;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
   };
 }
 
@@ -345,36 +369,6 @@ export interface SectionHighlightsPage extends Struct.ComponentSchema {
   };
   attributes: {
     highlights: Schema.Attribute.Component<'section.highlights', true>;
-    redirectUrl: Schema.Attribute.String;
-    subtitle: Schema.Attribute.String;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-  };
-}
-
-export interface SectionItineraries extends Struct.ComponentSchema {
-  collectionName: 'components_sections_trails';
-  info: {
-    description: '';
-    displayName: 'Roteiros&Listas';
-    icon: 'tasks';
-  };
-  attributes: {
-    isCarousel: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    itineraries: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::itinerary.itinerary'
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
     redirectUrl: Schema.Attribute.String;
     subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String &
@@ -463,9 +457,9 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'content.page-break': ContentPageBreak;
       'content.text': ContentText;
+      'content.text-content': ContentTextContent;
       'content.text-experience': ContentTextExperience;
       'content.text-guide': ContentTextGuide;
-      'content.text-itinerary': ContentTextItinerary;
       'content.text-location': ContentTextLocation;
       'content.widget': ContentWidget;
       'cta.button': CtaButton;
@@ -476,10 +470,10 @@ declare module '@strapi/strapi' {
       'section.banners-page': SectionBannersPage;
       'section.categories-pages': SectionCategoriesPages;
       'section.components': SectionComponents;
+      'section.contents': SectionContents;
       'section.experiences': SectionExperiences;
       'section.highlights': SectionHighlights;
       'section.highlights-page': SectionHighlightsPage;
-      'section.itineraries': SectionItineraries;
       'section.locations-map': SectionLocationsMap;
       'section.locations-page': SectionLocationsPage;
     }

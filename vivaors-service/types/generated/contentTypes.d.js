@@ -400,9 +400,9 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       'api::experience.experience'
     >;
     icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    itineraries: Schema.Attribute.Relation<
+    contents: Schema.Attribute.Relation<
       'manyToMany',
-      'api::itinerary.itinerary'
+      'api::content.content'
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -437,7 +437,7 @@ export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
     >;
     components: Schema.Attribute.DynamicZone<
       [
-        'section.itineraries',
+        'section.contents',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
@@ -450,7 +450,7 @@ export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
         'content.text',
         'section.experiences',
         'content.text-experience',
-        'content.text-itinerary',
+        'content.text-content',
         'content.text-guide',
         'content.text-location',
       ]
@@ -509,7 +509,7 @@ export interface ApiGuideGuide extends Struct.CollectionTypeSchema {
   attributes: {
     components: Schema.Attribute.DynamicZone<
       [
-        'section.itineraries',
+        'section.contents',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
@@ -522,7 +522,7 @@ export interface ApiGuideGuide extends Struct.CollectionTypeSchema {
         'content.text',
         'section.experiences',
         'content.text-experience',
-        'content.text-itinerary',
+        'content.text-content',
         'content.text-guide',
         'content.text-location',
       ]
@@ -563,12 +563,12 @@ export interface ApiGuideGuide extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiItineraryItinerary extends Struct.CollectionTypeSchema {
-  collectionName: 'itineraries';
+export interface Apicontentcontent extends Struct.CollectionTypeSchema {
+  collectionName: 'contents';
   info: {
-    displayName: 'itinerary';
-    pluralName: 'itineraries';
-    singularName: 'itinerary';
+    displayName: 'content';
+    pluralName: 'contents';
+    singularName: 'content';
   };
   options: {
     draftAndPublish: true;
@@ -580,7 +580,7 @@ export interface ApiItineraryItinerary extends Struct.CollectionTypeSchema {
     >;
     components: Schema.Attribute.DynamicZone<
       [
-        'section.itineraries',
+        'section.contents',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
@@ -593,7 +593,7 @@ export interface ApiItineraryItinerary extends Struct.CollectionTypeSchema {
         'content.text',
         'section.experiences',
         'content.text-experience',
-        'content.text-itinerary',
+        'content.text-content',
         'content.text-guide',
         'content.text-location',
       ]
@@ -619,7 +619,7 @@ export interface ApiItineraryItinerary extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::itinerary.itinerary'
+      'api::content.content'
     > &
       Schema.Attribute.Private;
     locations: Schema.Attribute.Relation<
@@ -657,7 +657,7 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
     >;
     components: Schema.Attribute.DynamicZone<
       [
-        'section.itineraries',
+        'section.contents',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
@@ -670,7 +670,7 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
         'content.text',
         'section.experiences',
         'content.text-experience',
-        'content.text-itinerary',
+        'content.text-content',
         'content.text-guide',
         'content.text-location',
       ]
@@ -684,9 +684,9 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
       'api::experience.experience'
     >;
     guides: Schema.Attribute.Relation<'manyToMany', 'api::guide.guide'>;
-    itineraries: Schema.Attribute.Relation<
+    contents: Schema.Attribute.Relation<
       'manyToMany',
-      'api::itinerary.itinerary'
+      'api::content.content'
     >;
     lat: Schema.Attribute.String;
     lng: Schema.Attribute.String;
@@ -726,7 +726,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   attributes: {
     components: Schema.Attribute.DynamicZone<
       [
-        'section.itineraries',
+        'section.contents',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
@@ -739,7 +739,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'content.text',
         'section.experiences',
         'content.text-experience',
-        'content.text-itinerary',
+        'content.text-content',
         'content.text-guide',
         'content.text-location',
       ]
@@ -1317,7 +1317,7 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::experience.experience': ApiExperienceExperience;
       'api::guide.guide': ApiGuideGuide;
-      'api::itinerary.itinerary': ApiItineraryItinerary;
+      'api::content.content': Apicontentcontent;
       'api::location.location': ApiLocationLocation;
       'api::page.page': ApiPagePage;
       'api::video.video': ApiVideoVideo;

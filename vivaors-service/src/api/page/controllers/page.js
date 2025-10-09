@@ -1,7 +1,11 @@
 "use strict";
-/**
- * page controller
- */
-const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::page.page');
+const { factories } = require('@strapi/strapi');
+
+const { createCoreController } = factories;
+
+module.exports = createCoreController("api::page.page", ({ strapi }) => ({
+  async importPages() {
+    return strapi.service("api::page.page").importPages();
+  }
+}));

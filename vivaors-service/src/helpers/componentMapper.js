@@ -14,7 +14,7 @@ const COMPONENT_MAP = {
   "sections.categories-page": "section.categories-pages",
   "sections.highlights-page": "section.highlights-page",
   "sections.locations-page": "section.locations-page",
-  "sections.trails": "section.itineraries",
+  "sections.trails": "section.contents",
   "sections.place-highlights": "section.highlights",
   "sections.banner-full": "section.banners-page",
   "sections.locations-map": "section.locations-map",

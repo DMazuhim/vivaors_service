@@ -16,10 +16,10 @@
             },
             "required": true
         },
-        "itineraries": {
+        "contents": {
             "type": "relation",
             "relation": "oneToMany",
-            "target": "api::itinerary.itinerary",
+            "target": "api::content.content",
             "pluginOptions": {
                 "translate": {
                     "translate": "translate"

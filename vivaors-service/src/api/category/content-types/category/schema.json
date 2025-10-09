@@ -59,10 +59,10 @@
       "target": "api::experience.experience",
       "inversedBy": "categories"
     },
-    "itineraries": {
+    "contents": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::itinerary.itinerary",
+      "target": "api::content.content",
       "inversedBy": "categories"
     }
   }
