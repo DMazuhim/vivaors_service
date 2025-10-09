@@ -52,12 +52,6 @@
     "slug": {
       "type": "string"
     },
-    "description": {
-      "type": "blocks"
-    },
-    "label": {
-      "type": "string"
-    },
     "tagline": {
       "type": "string"
     },
@@ -71,6 +65,57 @@
       "relation": "manyToMany",
       "target": "api::experience.experience",
       "mappedBy": "locations"
+    },
+    "pin": {
+      "type": "string"
+    },
+    "contents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::content.content",
+      "inversedBy": "locations"
+    },
+    "guides": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::guide.guide",
+      "mappedBy": "locations"
+    },
+    "locations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::location.location",
+      "mappedBy": "location"
+    },
+    "location": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::location.location",
+      "inversedBy": "locations"
+    },
+    "components": {
+      "type": "dynamiczone",
+      "components": [
+        "section.contents",
+        "section.categories-pages",
+        "section.locations-page",
+        "section.locations-map",
+        "section.highlights-page",
+        "section.banners-page",
+        "media.single-image",
+        "media.popup",
+        "cta.button",
+        "content.widget",
+        "content.text",
+        "section.experiences",
+        "content.text-experience",
+        "content.text-content",
+        "content.text-guide",
+        "content.text-location"
+      ]
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

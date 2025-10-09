@@ -1,23 +1,26 @@
 {
-  "collectionName": "components_sections_banners_pages",
-  "info": {
-    "displayName": "Seção de banners",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "banners": {
-      "type": "component",
-      "repeatable": true,
-      "component": "media.banner-marketing"
+    "collectionName": "components_sections_banners_pages",
+    "info": {
+        "displayName": "Seção de banners",
+        "description": ""
     },
-    "location": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::location.location"
-    },
-    "redirectUrl": {
-      "type": "string"
+    "options": {},
+    "attributes": {
+        "redirectUrl": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string"
+        },
+        "subtitle": {
+            "type": "string"
+        },
+        "type": {
+            "type": "enumeration",
+            "enum": [
+                "promoBanner",
+                "heroBanner"
+            ]
+        }
     }
-  }
 }

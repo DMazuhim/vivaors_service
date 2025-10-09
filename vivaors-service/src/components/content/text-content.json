@@ -1,0 +1,25 @@
+{
+    "collectionName": "components_content_text_contents",
+    "info": {
+        "displayName": "textcontent",
+        "icon": "pencil"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "subtitle": {
+            "type": "string"
+        },
+        "text": {
+            "type": "blocks"
+        },
+        "content": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::content.content"
+        }
+    },
+    "config": {}
+}

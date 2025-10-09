@@ -203,6 +203,63 @@ export interface AdminRole extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface AdminSession extends Struct.CollectionTypeSchema {
+  collectionName: 'strapi_sessions';
+  info: {
+    description: 'Session Manager storage';
+    displayName: 'Session';
+    name: 'Session';
+    pluralName: 'sessions';
+    singularName: 'session';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+    i18n: {
+      localized: false;
+    };
+  };
+  attributes: {
+    absoluteExpiresAt: Schema.Attribute.DateTime & Schema.Attribute.Private;
+    childId: Schema.Attribute.String & Schema.Attribute.Private;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    deviceId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    expiresAt: Schema.Attribute.DateTime &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'admin::session'> &
+      Schema.Attribute.Private;
+    origin: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sessionId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private &
+      Schema.Attribute.Unique;
+    status: Schema.Attribute.String & Schema.Attribute.Private;
+    type: Schema.Attribute.String & Schema.Attribute.Private;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface AdminTransferToken extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_transfer_tokens';
   info: {
@@ -384,13 +441,8 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    bannerDesktop: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    bannerMobile: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     color: Schema.Attribute.String;
+    contents: Schema.Attribute.Relation<'manyToMany', 'api::content.content'>;
     coverDesktop: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -405,7 +457,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::experience.experience'
     >;
-    guides: Schema.Attribute.Relation<'manyToMany', 'api::guide.guide'>;
     icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -416,7 +467,81 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.String;
     title: Schema.Attribute.String;
-    trails: Schema.Attribute.Relation<'manyToMany', 'api::trail.trail'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiContentContent extends Struct.CollectionTypeSchema {
+  collectionName: 'contents';
+  info: {
+    displayName: 'content';
+    pluralName: 'contents';
+    singularName: 'content';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::category.category'
+    >;
+    components: Schema.Attribute.DynamicZone<
+      [
+        'section.contents',
+        'section.categories-pages',
+        'section.locations-page',
+        'section.locations-map',
+        'section.highlights-page',
+        'section.banners-page',
+        'media.single-image',
+        'media.popup',
+        'cta.button',
+        'content.widget',
+        'content.text',
+        'section.experiences',
+        'content.text-experience',
+        'content.text-content',
+        'content.text-guide',
+        'content.text-location',
+      ]
+    >;
+    coverCard: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    coverDesktop: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    coverMobile: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText;
+    editorSignature: Schema.Attribute.Enumeration<
+      ['inicio-da-pagina', 'final-da-pagina']
+    >;
+    gallery: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::content.content'
+    > &
+      Schema.Attribute.Private;
+    locations: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::location.location'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    readTime: Schema.Attribute.String;
+    resume: Schema.Attribute.RichText;
+    seo: Schema.Attribute.Component<'meta.seo', false>;
+    slug: Schema.Attribute.String;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -441,26 +566,22 @@ export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
     >;
     components: Schema.Attribute.DynamicZone<
       [
-        'section.trails',
-        'section.places-page',
-        'section.page-break',
+        'section.contents',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
-        'section.highlights',
         'section.highlights-page',
-        'section.highlights-guide-v2',
         'section.banners-page',
-        'section.banner-full',
         'media.single-image',
         'media.popup',
-        'media.gallery',
-        'media.banner-marketing',
-        'media.banner-campaign',
         'cta.button',
-        'lead.form',
         'content.widget',
         'content.text',
+        'section.experiences',
+        'content.text-experience',
+        'content.text-content',
+        'content.text-guide',
+        'content.text-location',
       ]
     >;
     coverDesktop: Schema.Attribute.Media<
@@ -492,7 +613,7 @@ export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
     placeGoogleId: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     relevance: Schema.Attribute.String;
-    seo: Schema.Attribute.Component<'meta.seo', true>;
+    seo: Schema.Attribute.Component<'meta.seo', false>;
     slug: Schema.Attribute.String;
     tagline: Schema.Attribute.String;
     tier: Schema.Attribute.String;
@@ -500,6 +621,7 @@ export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    video: Schema.Attribute.Relation<'manyToOne', 'api::video.video'>;
   };
 }
 
@@ -514,32 +636,24 @@ export interface ApiGuideGuide extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    categories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::category.category'
-    >;
     components: Schema.Attribute.DynamicZone<
       [
-        'section.trails',
-        'section.places-page',
-        'section.page-break',
+        'section.contents',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
-        'section.highlights',
         'section.highlights-page',
-        'section.highlights-guide-v2',
         'section.banners-page',
-        'section.banner-full',
         'media.single-image',
         'media.popup',
-        'media.gallery',
-        'media.banner-marketing',
-        'media.banner-campaign',
         'cta.button',
-        'lead.form',
         'content.widget',
         'content.text',
+        'section.experiences',
+        'content.text-experience',
+        'content.text-content',
+        'content.text-guide',
+        'content.text-location',
       ]
     >;
     coverCardDesktop: Schema.Attribute.Media<
@@ -562,6 +676,10 @@ export interface ApiGuideGuide extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::guide.guide'> &
       Schema.Attribute.Private;
+    locations: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::location.location'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'meta.seo', false>;
     slug: Schema.Attribute.String;
@@ -570,6 +688,7 @@ export interface ApiGuideGuide extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    video: Schema.Attribute.Relation<'manyToOne', 'api::video.video'>;
   };
 }
 
@@ -590,15 +709,36 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
     bannerMobile: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    components: Schema.Attribute.DynamicZone<
+      [
+        'section.contents',
+        'section.categories-pages',
+        'section.locations-page',
+        'section.locations-map',
+        'section.highlights-page',
+        'section.banners-page',
+        'media.single-image',
+        'media.popup',
+        'cta.button',
+        'content.widget',
+        'content.text',
+        'section.experiences',
+        'content.text-experience',
+        'content.text-content',
+        'content.text-guide',
+        'content.text-location',
+      ]
+    >;
+    contents: Schema.Attribute.Relation<'manyToMany', 'api::content.content'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks;
+    description: Schema.Attribute.RichText;
     experiences: Schema.Attribute.Relation<
       'manyToMany',
       'api::experience.experience'
     >;
-    label: Schema.Attribute.String;
+    guides: Schema.Attribute.Relation<'manyToMany', 'api::guide.guide'>;
     lat: Schema.Attribute.String;
     lng: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -607,7 +747,10 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
       'api::location.location'
     > &
       Schema.Attribute.Private;
+    location: Schema.Attribute.Relation<'manyToOne', 'api::location.location'>;
+    locations: Schema.Attribute.Relation<'oneToMany', 'api::location.location'>;
     name: Schema.Attribute.String;
+    pin: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'meta.seo', false>;
     slug: Schema.Attribute.String;
@@ -634,26 +777,22 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   attributes: {
     components: Schema.Attribute.DynamicZone<
       [
-        'section.trails',
-        'section.places-page',
-        'section.page-break',
+        'section.contents',
         'section.categories-pages',
         'section.locations-page',
         'section.locations-map',
-        'section.highlights',
         'section.highlights-page',
-        'section.highlights-guide-v2',
         'section.banners-page',
-        'section.banner-full',
         'media.single-image',
         'media.popup',
-        'media.gallery',
-        'media.banner-marketing',
-        'media.banner-campaign',
         'cta.button',
-        'lead.form',
         'content.widget',
         'content.text',
+        'section.experiences',
+        'content.text-experience',
+        'content.text-content',
+        'content.text-guide',
+        'content.text-location',
       ]
     >;
     coverDesktop: Schema.Attribute.Media<
@@ -674,7 +813,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     slug: Schema.Attribute.String;
     title: Schema.Attribute.String;
     type: Schema.Attribute.Enumeration<
-      ['campanha', 'agenda', 'pagina', 'blog']
+      ['campanhas', 'pagina', 'agenda', 'home-loja', 'blog']
     >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -682,76 +821,38 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiTrailTrail extends Struct.CollectionTypeSchema {
-  collectionName: 'trails';
+export interface ApiVideoVideo extends Struct.CollectionTypeSchema {
+  collectionName: 'videos';
   info: {
-    displayName: 'trail';
-    pluralName: 'trails';
-    singularName: 'trail';
+    displayName: 'video';
+    pluralName: 'videos';
+    singularName: 'video';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    categories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::category.category'
-    >;
-    components: Schema.Attribute.DynamicZone<
-      [
-        'section.trails',
-        'section.places-page',
-        'section.page-break',
-        'section.categories-pages',
-        'section.locations-page',
-        'section.locations-map',
-        'section.highlights',
-        'section.highlights-page',
-        'section.highlights-guide-v2',
-        'section.banners-page',
-        'section.banner-full',
-        'media.single-image',
-        'media.popup',
-        'media.gallery',
-        'media.banner-marketing',
-        'media.banner-campaign',
-        'cta.button',
-        'lead.form',
-        'content.widget',
-        'content.text',
-      ]
-    >;
-    coverCard: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    coverDesktop: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    coverMobile: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.RichText;
-    editorSignature: Schema.Attribute.Enumeration<
-      ['inicio-da-pagina', 'final-da-pagina']
+    description: Schema.Attribute.Blocks;
+    experiences: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::experience.experience'
     >;
-    forms: Schema.Attribute.Component<'lead.form', true>;
-    gallery: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    guides: Schema.Attribute.Relation<'oneToMany', 'api::guide.guide'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::trail.trail'> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::video.video'> &
       Schema.Attribute.Private;
+    provider: Schema.Attribute.Enumeration<['youtube']>;
     publishedAt: Schema.Attribute.DateTime;
-    readTime: Schema.Attribute.String;
-    resume: Schema.Attribute.RichText;
-    seo: Schema.Attribute.Component<'meta.seo', false>;
-    slug: Schema.Attribute.String;
-    titlle: Schema.Attribute.String;
+    thumbUrl: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['default', 'shorts']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    videoId: Schema.Attribute.String;
   };
 }
 
@@ -888,6 +989,159 @@ export interface PluginI18NLocale extends Struct.CollectionTypeSchema {
         number
       >;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface PluginNavigationAudience extends Struct.CollectionTypeSchema {
+  collectionName: 'audience';
+  info: {
+    displayName: 'Audience';
+    name: 'audience';
+    pluralName: 'audiences';
+    singularName: 'audience';
+  };
+  options: {
+    comment: 'Audience';
+    draftAndPublish: false;
+    increments: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    key: Schema.Attribute.UID<'name'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::navigation.audience'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface PluginNavigationNavigation
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'navigations';
+  info: {
+    displayName: 'Navigation';
+    name: 'navigation';
+    pluralName: 'navigations';
+    singularName: 'navigation';
+  };
+  options: {
+    comment: '';
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    items: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::navigation.navigation-item'
+    >;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::navigation.navigation'
+    >;
+    name: Schema.Attribute.Text & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    visible: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+  };
+}
+
+export interface PluginNavigationNavigationItem
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'navigations_items';
+  info: {
+    displayName: 'Navigation Item';
+    name: 'navigation-item';
+    pluralName: 'navigation-items';
+    singularName: 'navigation-item';
+  };
+  options: {
+    comment: 'Navigation Item';
+    draftAndPublish: false;
+    increments: true;
+    timestamps: true;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+    i18n: {
+      localized: false;
+    };
+  };
+  attributes: {
+    additionalFields: Schema.Attribute.JSON & Schema.Attribute.DefaultTo<{}>;
+    audience: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::navigation.audience'
+    >;
+    autoSync: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    collapsed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    externalPath: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::navigation.navigation-item'
+    > &
+      Schema.Attribute.Private;
+    master: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::navigation.navigation'
+    >;
+    menuAttached: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    parent: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::navigation.navigation-item'
+    >;
+    path: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    related: Schema.Attribute.Relation<'morphToMany'> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    type: Schema.Attribute.Enumeration<['INTERNAL', 'EXTERNAL', 'WRAPPER']> &
+      Schema.Attribute.DefaultTo<'INTERNAL'>;
+    uiRouterKey: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1261,18 +1515,23 @@ declare module '@strapi/strapi' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::permission': AdminPermission;
       'admin::role': AdminRole;
+      'admin::session': AdminSession;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::category.category': ApiCategoryCategory;
+      'api::content.content': ApiContentContent;
       'api::experience.experience': ApiExperienceExperience;
       'api::guide.guide': ApiGuideGuide;
       'api::location.location': ApiLocationLocation;
       'api::page.page': ApiPagePage;
-      'api::trail.trail': ApiTrailTrail;
+      'api::video.video': ApiVideoVideo;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
+      'plugin::navigation.audience': PluginNavigationAudience;
+      'plugin::navigation.navigation': PluginNavigationNavigation;
+      'plugin::navigation.navigation-item': PluginNavigationNavigationItem;
       'plugin::review-workflows.workflow': PluginReviewWorkflowsWorkflow;
       'plugin::review-workflows.workflow-stage': PluginReviewWorkflowsWorkflowStage;
       'plugin::upload.file': PluginUploadFile;

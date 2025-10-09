@@ -1,41 +1,30 @@
 {
-  "collectionName": "components_sections_highlights_pages",
-  "info": {
-    "displayName": "Destaques de página",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "highlights": {
-      "type": "component",
-      "repeatable": true,
-      "component": "section.highlights"
+    "collectionName": "components_sections_highlights_pages",
+    "info": {
+        "displayName": "Destaques de página",
+        "description": ""
     },
-    "title": {
-      "type": "string",
-      "required": true,
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
+    "options": {},
+    "attributes": {
+        "highlights": {
+            "type": "component",
+            "component": "section.highlights",
+            "repeatable": true
+        },
+        "title": {
+            "type": "string",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            },
+            "required": true
+        },
+        "redirectUrl": {
+            "type": "string"
+        },
+        "subtitle": {
+            "type": "string"
         }
-      }
-    },
-    "location": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::location.location"
-    },
-    "titleSize": {
-      "type": "enumeration",
-      "enum": [
-        "grande",
-        "medio",
-        "pequeno"
-      ],
-      "default": "medio"
-    },
-    "redirectUrl": {
-      "type": "string"
     }
-  }
 }

@@ -1,90 +1,84 @@
 {
-  "collectionName": "components_media_single_images",
-  "info": {
-    "displayName": "Imagem",
-    "icon": "image",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {
-        "translate": {
-          "translate": "copy"
+    "collectionName": "components_media_single_images",
+    "info": {
+        "displayName": "Imagem",
+        "icon": "image",
+        "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "images": {
+            "type": "media",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "copy"
+                }
+            },
+            "multiple": true,
+            "required": true,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "position": {
+            "type": "enumeration",
+            "required": true,
+            "default": "center",
+            "enum": [
+                "left",
+                "center",
+                "right"
+            ]
+        },
+        "imageDirection": {
+            "type": "enumeration",
+            "enum": [
+                "horizontal",
+                "vertical"
+            ]
+        },
+        "title": {
+            "type": "string",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            }
+        },
+        "text": {
+            "type": "richtext",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            }
+        },
+        "buttonPosition": {
+            "type": "enumeration",
+            "enum": [
+                "left",
+                "center",
+                "right"
+            ]
+        },
+        "buttonLabel": {
+            "type": "string",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            }
+        },
+        "buttonUrl": {
+            "type": "string",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "copy"
+                }
+            }
+        },
+        "subtitle": {
+            "type": "string"
         }
-      }
-    },
-    "position": {
-      "type": "enumeration",
-      "enum": [
-        "left",
-        "center",
-        "right"
-      ],
-      "default": "center",
-      "required": true
-    },
-    "imageDirection": {
-      "type": "enumeration",
-      "enum": [
-        "horizontal",
-        "vertical"
-      ]
-    },
-    "title": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "text": {
-      "type": "richtext",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "buttonPosition": {
-      "type": "enumeration",
-      "enum": [
-        "left",
-        "center",
-        "right"
-      ]
-    },
-    "buttonLabel": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "buttonUrl": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "copy"
-        }
-      }
-    },
-    "titleSize": {
-      "type": "enumeration",
-      "enum": [
-        "grande",
-        "medio",
-        "pequeno"
-      ],
-      "default": "medio"
     }
-  }
 }

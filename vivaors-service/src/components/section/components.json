@@ -1,31 +1,21 @@
 {
-  "collectionName": "components_section_components",
-  "info": {
-    "displayName": "components",
-    "icon": "apps"
-  },
-  "options": {},
-  "attributes": {
-    "sectionTrails": {
-      "type": "component",
-      "component": "section.trails",
-      "repeatable": true
+    "collectionName": "components_section_components",
+    "info": {
+        "displayName": "components",
+        "icon": "apps"
     },
-    "placesPage": {
-      "type": "component",
-      "component": "section.places-page",
-      "repeatable": true
+    "options": {},
+    "attributes": {
+        "sectionTrails": {
+            "type": "component",
+            "component": "section.contents",
+            "repeatable": true
+        },
+        "categories": {
+            "type": "component",
+            "component": "section.categories-pages",
+            "repeatable": true
+        }
     },
-    "pageBreak": {
-      "type": "component",
-      "component": "section.page-break",
-      "repeatable": true
-    },
-    "categories": {
-      "type": "component",
-      "component": "section.categories-pages",
-      "repeatable": true
-    }
-  },
-  "config": {}
+    "config": {}
 }

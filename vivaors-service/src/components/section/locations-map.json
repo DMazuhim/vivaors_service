@@ -1,56 +1,47 @@
 {
-  "collectionName": "components_sections_locations_maps",
-  "info": {
-    "displayName": "Mapa de Cidade, Rota e Região",
-    "icon": "earth",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "title": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
+    "collectionName": "components_sections_locations_maps",
+    "info": {
+        "displayName": "Mapa de Cidade, Rota e Região",
+        "icon": "earth",
+        "description": ""
     },
-    "locations": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::location.location",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            }
+        },
+        "locations": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::location.location",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            }
+        },
+        "location": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::location.location",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            }
+        },
+        "subtitle": {
+            "type": "string",
+            "pluginOptions": {
+                "translate": {
+                    "translate": "translate"
+                }
+            }
         }
-      }
-    },
-    "location": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::location.location",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "subtitle": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "titleSize": {
-      "type": "enumeration",
-      "enum": [
-        "grande",
-        "medio",
-        "pequeno"
-      ],
-      "default": "medio"
     }
-  }
 }

@@ -1,0 +1,23 @@
+{
+    "collectionName": "components_content_page_breaks",
+    "info": {
+        "displayName": "pageBreak",
+        "icon": "oneToOne"
+    },
+    "options": {},
+    "attributes": {
+        "hexColor": {
+            "type": "string"
+        },
+        "thickness": {
+            "type": "enumeration",
+            "default": "medium",
+            "enum": [
+                "small",
+                "medium",
+                "large"
+            ]
+        }
+    },
+    "config": {}
+}

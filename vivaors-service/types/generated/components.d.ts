@@ -1,5 +1,18 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ContentPageBreak extends Struct.ComponentSchema {
+  collectionName: 'components_content_page_breaks';
+  info: {
+    displayName: 'pageBreak';
+    icon: 'oneToOne';
+  };
+  attributes: {
+    hexColor: Schema.Attribute.String;
+    thickness: Schema.Attribute.Enumeration<['small', 'medium', 'large']> &
+      Schema.Attribute.DefaultTo<'medium'>;
+  };
+}
+
 export interface ContentText extends Struct.ComponentSchema {
   collectionName: 'components_content_texts';
   info: {
@@ -18,6 +31,65 @@ export interface ContentText extends Struct.ComponentSchema {
   };
 }
 
+export interface ContentTextContent extends Struct.ComponentSchema {
+  collectionName: 'components_content_text_contents';
+  info: {
+    displayName: 'textcontent';
+    icon: 'pencil';
+  };
+  attributes: {
+    content: Schema.Attribute.Relation<'oneToOne', 'api::content.content'>;
+    subtitle: Schema.Attribute.String;
+    text: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ContentTextExperience extends Struct.ComponentSchema {
+  collectionName: 'components_content_text_experiences';
+  info: {
+    displayName: 'textExperience';
+    icon: 'pencil';
+  };
+  attributes: {
+    experience: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::experience.experience'
+    >;
+    subtitle: Schema.Attribute.String;
+    text: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ContentTextGuide extends Struct.ComponentSchema {
+  collectionName: 'components_content_text_guides';
+  info: {
+    displayName: 'textGuide';
+    icon: 'pencil';
+  };
+  attributes: {
+    guide: Schema.Attribute.Relation<'oneToOne', 'api::guide.guide'>;
+    subtitle: Schema.Attribute.String;
+    text: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ContentTextLocation extends Struct.ComponentSchema {
+  collectionName: 'components_content_text_locations';
+  info: {
+    displayName: 'textLocation';
+    icon: 'pencil';
+  };
+  attributes: {
+    location: Schema.Attribute.Relation<'oneToOne', 'api::location.location'>;
+    subtitle: Schema.Attribute.String;
+    text: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ContentWidget extends Struct.ComponentSchema {
   collectionName: 'components_content_widgets';
   info: {
@@ -25,10 +97,9 @@ export interface ContentWidget extends Struct.ComponentSchema {
     icon: 'grid';
   };
   attributes: {
-    script: Schema.Attribute.Text;
     title: Schema.Attribute.String;
-    titleSize: Schema.Attribute.Enumeration<['grande', 'medio', 'pequeno']>;
-    type: Schema.Attribute.Enumeration<['captor-de-leads']>;
+    type: Schema.Attribute.Enumeration<['form', 'widget']>;
+    value: Schema.Attribute.Text;
   };
 }
 
@@ -48,8 +119,7 @@ export interface CtaButton extends Struct.ComponentSchema {
         };
       }>;
     position: Schema.Attribute.Enumeration<['left', 'center', 'right']>;
-    titleSize: Schema.Attribute.Enumeration<['grande', 'medio', 'pequeno']> &
-      Schema.Attribute.DefaultTo<'medio'>;
+    subtitle: Schema.Attribute.String;
     url: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -57,122 +127,6 @@ export interface CtaButton extends Struct.ComponentSchema {
           translate: 'copy';
         };
       }>;
-  };
-}
-
-export interface LeadForm extends Struct.ComponentSchema {
-  collectionName: 'components_lead_forms';
-  info: {
-    displayName: 'form';
-    icon: 'bulletList';
-  };
-  attributes: {
-    title: Schema.Attribute.String;
-    url: Schema.Attribute.String;
-  };
-}
-
-export interface MediaBannerCampaign extends Struct.ComponentSchema {
-  collectionName: 'components_media_banner_campaigns';
-  info: {
-    description: '';
-    displayName: 'bannerCampaign';
-    icon: 'film';
-  };
-  attributes: {
-    coverDesktop: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'copy';
-        };
-      }>;
-    coverMobile: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'copy';
-        };
-      }>;
-    url: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'copy';
-        };
-      }>;
-  };
-}
-
-export interface MediaBannerMarketing extends Struct.ComponentSchema {
-  collectionName: 'components_media_banner_marketings';
-  info: {
-    displayName: 'bannerMarketing';
-  };
-  attributes: {
-    coverDesktop: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'copy';
-        };
-      }>;
-    coverMobile: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'copy';
-        };
-      }>;
-    url: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'copy';
-        };
-      }>;
-  };
-}
-
-export interface MediaGallery extends Struct.ComponentSchema {
-  collectionName: 'components_media_galleries';
-  info: {
-    description: '';
-    displayName: 'Galeria';
-    icon: 'images';
-  };
-  attributes: {
-    buttonLabel: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    buttonPosition: Schema.Attribute.Enumeration<['left', 'center', 'right']>;
-    buttonUrl: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'copy';
-        };
-      }>;
-    images: Schema.Attribute.Media<'images', true> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'copy';
-        };
-      }>;
-    position: Schema.Attribute.Enumeration<['left', 'center', 'right']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'center'>;
-    text: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    title: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    titleSize: Schema.Attribute.Enumeration<['grande', 'medio', 'pequeno']> &
-      Schema.Attribute.DefaultTo<'medio'>;
   };
 }
 
@@ -210,17 +164,18 @@ export interface MediaSingleImage extends Struct.ComponentSchema {
           translate: 'copy';
         };
       }>;
-    image: Schema.Attribute.Media<'images'> &
+    imageDirection: Schema.Attribute.Enumeration<['horizontal', 'vertical']>;
+    images: Schema.Attribute.Media<'images', true> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         translate: {
           translate: 'copy';
         };
       }>;
-    imageDirection: Schema.Attribute.Enumeration<['horizontal', 'vertical']>;
     position: Schema.Attribute.Enumeration<['left', 'center', 'right']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'center'>;
+    subtitle: Schema.Attribute.String;
     text: Schema.Attribute.RichText &
       Schema.Attribute.SetPluginOptions<{
         translate: {
@@ -233,8 +188,19 @@ export interface MediaSingleImage extends Struct.ComponentSchema {
           translate: 'translate';
         };
       }>;
-    titleSize: Schema.Attribute.Enumeration<['grande', 'medio', 'pequeno']> &
-      Schema.Attribute.DefaultTo<'medio'>;
+  };
+}
+
+export interface MediaVideos extends Struct.ComponentSchema {
+  collectionName: 'components_media_videos';
+  info: {
+    displayName: 'videos';
+    icon: 'play';
+  };
+  attributes: {
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    videos: Schema.Attribute.Relation<'oneToMany', 'api::video.video'>;
   };
 }
 
@@ -251,37 +217,6 @@ export interface MetaSeo extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionBannerFull extends Struct.ComponentSchema {
-  collectionName: 'components_sections_banner_full';
-  info: {
-    description: '';
-    displayName: 'Mega Banner';
-    icon: 'cube';
-  };
-  attributes: {
-    coverDesktop: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'copy';
-        };
-      }>;
-    coverMobile: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'copy';
-        };
-      }>;
-    title: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    titleSize: Schema.Attribute.Enumeration<['grande', 'medio', 'pequeno']> &
-      Schema.Attribute.DefaultTo<'medio'>;
-  };
-}
-
 export interface SectionBannersPage extends Struct.ComponentSchema {
   collectionName: 'components_sections_banners_pages';
   info: {
@@ -289,9 +224,10 @@ export interface SectionBannersPage extends Struct.ComponentSchema {
     displayName: 'Se\u00E7\u00E3o de banners';
   };
   attributes: {
-    banners: Schema.Attribute.Component<'media.banner-marketing', true>;
-    location: Schema.Attribute.Relation<'oneToOne', 'api::location.location'>;
     redirectUrl: Schema.Attribute.String;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['promoBanner', 'heroBanner']>;
   };
 }
 
@@ -312,6 +248,7 @@ export interface SectionCategoriesPages extends Struct.ComponentSchema {
           translate: 'translate';
         };
       }>;
+    isCarrousel: Schema.Attribute.Boolean;
     redirectUrl: Schema.Attribute.String;
     subtitle: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -325,8 +262,6 @@ export interface SectionCategoriesPages extends Struct.ComponentSchema {
           translate: 'translate';
         };
       }>;
-    titleSize: Schema.Attribute.Enumeration<['grande', 'medio', 'pequeno']> &
-      Schema.Attribute.DefaultTo<'medio'>;
   };
 }
 
@@ -338,9 +273,52 @@ export interface SectionComponents extends Struct.ComponentSchema {
   };
   attributes: {
     categories: Schema.Attribute.Component<'section.categories-pages', true>;
-    pageBreak: Schema.Attribute.Component<'section.page-break', true>;
-    placesPage: Schema.Attribute.Component<'section.places-page', true>;
-    sectionTrails: Schema.Attribute.Component<'section.trails', true>;
+    sectionTrails: Schema.Attribute.Component<'section.contents', true>;
+  };
+}
+
+export interface SectionContents extends Struct.ComponentSchema {
+  collectionName: 'components_sections_trails';
+  info: {
+    description: '';
+    displayName: 'Roteiros&Listas';
+    icon: 'tasks';
+  };
+  attributes: {
+    contents: Schema.Attribute.Relation<'oneToMany', 'api::content.content'> &
+      Schema.Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    isCarousel: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    redirectUrl: Schema.Attribute.String;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+  };
+}
+
+export interface SectionExperiences extends Struct.ComponentSchema {
+  collectionName: 'components_section_experiences';
+  info: {
+    displayName: 'experiences';
+    icon: 'gate';
+  };
+  attributes: {
+    experiences: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::experience.experience'
+    >;
+    isCarrousel: Schema.Attribute.Boolean;
+    redirectUrl: Schema.Attribute.String;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -383,23 +361,6 @@ export interface SectionHighlights extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionHighlightsGuideV2 extends Struct.ComponentSchema {
-  collectionName: 'components_sections_highlights_guides';
-  info: {
-    displayName: 'highlightGuides';
-    icon: 'dashboard';
-  };
-  attributes: {
-    highlights: Schema.Attribute.Component<'section.highlights', true>;
-    title: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-  };
-}
-
 export interface SectionHighlightsPage extends Struct.ComponentSchema {
   collectionName: 'components_sections_highlights_pages';
   info: {
@@ -408,8 +369,8 @@ export interface SectionHighlightsPage extends Struct.ComponentSchema {
   };
   attributes: {
     highlights: Schema.Attribute.Component<'section.highlights', true>;
-    location: Schema.Attribute.Relation<'oneToOne', 'api::location.location'>;
     redirectUrl: Schema.Attribute.String;
+    subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -417,8 +378,6 @@ export interface SectionHighlightsPage extends Struct.ComponentSchema {
           translate: 'translate';
         };
       }>;
-    titleSize: Schema.Attribute.Enumeration<['grande', 'medio', 'pequeno']> &
-      Schema.Attribute.DefaultTo<'medio'>;
   };
 }
 
@@ -457,8 +416,6 @@ export interface SectionLocationsMap extends Struct.ComponentSchema {
           translate: 'translate';
         };
       }>;
-    titleSize: Schema.Attribute.Enumeration<['grande', 'medio', 'pequeno']> &
-      Schema.Attribute.DefaultTo<'medio'>;
   };
 }
 
@@ -469,12 +426,6 @@ export interface SectionLocationsPage extends Struct.ComponentSchema {
     displayName: 'Se\u00E7\u00E3o cidades, rotas e regi\u00F5es';
   };
   attributes: {
-    location: Schema.Attribute.Relation<'oneToOne', 'api::location.location'> &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
     locations: Schema.Attribute.Relation<
       'oneToMany',
       'api::location.location'
@@ -498,126 +449,33 @@ export interface SectionLocationsPage extends Struct.ComponentSchema {
           translate: 'translate';
         };
       }>;
-    titleSize: Schema.Attribute.Enumeration<['grande', 'medio', 'pequeno']> &
-      Schema.Attribute.DefaultTo<'medio'>;
-  };
-}
-
-export interface SectionPageBreak extends Struct.ComponentSchema {
-  collectionName: 'components_sections_page_breaks';
-  info: {
-    description: '';
-    displayName: 'pageBreak';
-    icon: 'server';
-  };
-  attributes: {
-    hexColor: Schema.Attribute.String;
-    title: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    titleSize: Schema.Attribute.Enumeration<['grande', 'medio', 'pequeno']> &
-      Schema.Attribute.DefaultTo<'medio'>;
-  };
-}
-
-export interface SectionPlacesPage extends Struct.ComponentSchema {
-  collectionName: 'components_sections_places_pages';
-  info: {
-    description: '';
-    displayName: 'placesPage';
-  };
-  attributes: {
-    isCarousel: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    places: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::experience.experience'
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    redirectUrl: Schema.Attribute.String;
-    subtitle: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    titleSize: Schema.Attribute.Enumeration<['grande', 'medio', 'pequeno']> &
-      Schema.Attribute.DefaultTo<'pequeno'>;
-  };
-}
-
-export interface SectionTrails extends Struct.ComponentSchema {
-  collectionName: 'components_sections_trails';
-  info: {
-    description: '';
-    displayName: 'Roteiros&Listas';
-    icon: 'tasks';
-  };
-  attributes: {
-    description: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    isCarousel: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    redirectUrl: Schema.Attribute.String;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    titleSize: Schema.Attribute.Enumeration<['grande', 'medio', 'pequeno']> &
-      Schema.Attribute.DefaultTo<'medio'>;
-    trails: Schema.Attribute.Relation<'oneToMany', 'api::trail.trail'> &
-      Schema.Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'content.page-break': ContentPageBreak;
       'content.text': ContentText;
+      'content.text-content': ContentTextContent;
+      'content.text-experience': ContentTextExperience;
+      'content.text-guide': ContentTextGuide;
+      'content.text-location': ContentTextLocation;
       'content.widget': ContentWidget;
       'cta.button': CtaButton;
-      'lead.form': LeadForm;
-      'media.banner-campaign': MediaBannerCampaign;
-      'media.banner-marketing': MediaBannerMarketing;
-      'media.gallery': MediaGallery;
       'media.popup': MediaPopup;
       'media.single-image': MediaSingleImage;
+      'media.videos': MediaVideos;
       'meta.seo': MetaSeo;
-      'section.banner-full': SectionBannerFull;
       'section.banners-page': SectionBannersPage;
       'section.categories-pages': SectionCategoriesPages;
       'section.components': SectionComponents;
+      'section.contents': SectionContents;
+      'section.experiences': SectionExperiences;
       'section.highlights': SectionHighlights;
-      'section.highlights-guide-v2': SectionHighlightsGuideV2;
       'section.highlights-page': SectionHighlightsPage;
       'section.locations-map': SectionLocationsMap;
       'section.locations-page': SectionLocationsPage;
-      'section.page-break': SectionPageBreak;
-      'section.places-page': SectionPlacesPage;
-      'section.trails': SectionTrails;
     }
   }
 }

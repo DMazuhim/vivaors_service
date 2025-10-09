@@ -73,36 +73,38 @@
       "component": "meta.seo",
       "repeatable": false
     },
-    "categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "mappedBy": "guides"
-    },
     "components": {
       "type": "dynamiczone",
       "components": [
-        "section.trails",
-        "section.places-page",
-        "section.page-break",
+        "section.contents",
         "section.categories-pages",
         "section.locations-page",
         "section.locations-map",
-        "section.highlights",
         "section.highlights-page",
-        "section.highlights-guide-v2",
         "section.banners-page",
-        "section.banner-full",
         "media.single-image",
         "media.popup",
-        "media.gallery",
-        "media.banner-marketing",
-        "media.banner-campaign",
         "cta.button",
-        "lead.form",
         "content.widget",
-        "content.text"
+        "content.text",
+        "section.experiences",
+        "content.text-experience",
+        "content.text-content",
+        "content.text-guide",
+        "content.text-location"
       ]
+    },
+    "locations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::location.location",
+      "inversedBy": "guides"
+    },
+    "video": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::video.video",
+      "inversedBy": "guides"
     }
   }
 }

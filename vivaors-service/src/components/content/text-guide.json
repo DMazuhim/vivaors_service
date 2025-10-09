@@ -1,0 +1,25 @@
+{
+    "collectionName": "components_content_text_guides",
+    "info": {
+        "displayName": "textGuide",
+        "icon": "pencil"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "subtitle": {
+            "type": "string"
+        },
+        "text": {
+            "type": "blocks"
+        },
+        "guide": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::guide.guide"
+        }
+    },
+    "config": {}
+}
