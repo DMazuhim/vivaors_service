@@ -11,7 +11,7 @@ module.exports = {
     await Promise.all(
       contents.map(async (content) => {
         try {
-          await strapi.entityService.create('api::content.content', {
+          await strapi.documents('api::content.content').create({
             data: content,
           });
 
@@ -34,15 +34,15 @@ module.exports = {
   parseTrailToContent(trail) {
     return {
       id: trail?.id,
-      documentId:trail?.documentId,
-      titlle:trail?.titlle,
-      slug:trail?.slug,
-      description:trail?.description,
-      resume:trail?.resume,
-      readTime:trail?.readTime,
-      editorSignature:trail?.editorSignature,
-      createdAt:trail?.createdAt,
-      updatedAt:trail?.updatedAt,
+      documentId: trail?.documentId,
+      titlle: trail?.title,
+      slug: trail?.slug,
+      description: trail?.description,
+      resume: trail?.resume,
+      readTime: trail?.readTime,
+      editorSignature: trail?.editorSignature,
+      createdAt: trail?.createdAt,
+      updatedAt: trail?.updatedAt,
       seo: trail?.seo,
       locations: (trail?.locations || []).map(location => location.id),
       categories: (trail?.categories || []).map(category => category.id),
